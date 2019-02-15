@@ -14,7 +14,7 @@ import HelloService from "../../../service/HelloService";
 @controller("/api/hello")
 export default class HelloController {
   @inject(HelloService)
-  private helloServiece: HelloService;
+  private helloService: HelloService;
 
   @ApiOperationGet({
     path: "/",
@@ -27,7 +27,7 @@ export default class HelloController {
     }
   })
   @httpGet("/")
-  public getAll(): any {
-    return this.helloServiece.getHello();
+  public getAll(): string {
+    return this.helloService.getHello();
   }
 }
