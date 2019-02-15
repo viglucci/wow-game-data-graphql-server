@@ -1,0 +1,14 @@
+type LocalizedString {
+  en_US: String
+  es_MX: String
+  pt_BR: String
+  de_DE: String
+  es_ES: String
+  fr_FR: String
+  it_IT: String
+  pt_PT: String
+  ru_RU: String
+  ko_KR: String
+  zh_TW: String
+  zh_CN: String
+}

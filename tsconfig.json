@@ -1,22 +1,18 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "noImplicitAny": false,
-        "sourceMap": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "noUnusedLocals": true,
-        "outDir": "dist",
-        "rootDir": "app"
-    },
-    "compileOnSave": false,
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "typeRoots": ["node_modules/@types/"],
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "outDir": "dist",
+    "rootDir": "app"
+  },
+  "compileOnSave": false,
+  "exclude": ["node_modules"]
 }

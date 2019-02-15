@@ -7,7 +7,6 @@ import * as path from "path";
 import * as swagger from "swagger-express-ts";
 import { importSchema } from "graphql-import";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
-
 import "./ioc/loader";
 import { container } from "./ioc/ioc";
 

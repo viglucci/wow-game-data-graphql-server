@@ -1,9 +1,6 @@
 {
-    "verbose": true,
-    "ext": "*.ts",
-    "exec": "ts-node ./app/start.ts",
-    "ignore": [
-        "*.test.js",
-        "fixtures/*"
-    ]
+  "verbose": true,
+  "ext": "*.ts,graphql",
+  "exec": "ts-node ./app/start.ts",
+  "ignore": ["*.test.js", "fixtures/*"]
 }

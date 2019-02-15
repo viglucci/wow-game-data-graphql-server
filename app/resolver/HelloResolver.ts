@@ -1,6 +1,6 @@
-import { provide } from "inversify-binding-decorators";
+import { injectable } from "../ioc/ioc";
 
-@provide(HelloResolver)
+@injectable()
 export default class HelloResolver {
   getDefinition() {
     return {
@@ -8,9 +8,5 @@ export default class HelloResolver {
         hello: () => "hello world"
       }
     };
-  }
-
-  resolveHello() {
-    return "hello world";
   }
 }
