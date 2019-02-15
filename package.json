@@ -1,0 +1,19 @@
+{
+  "name": "wow-game-data-graphql-server",
+  "version": "0.1.0",
+  "description": "Experiment for exposing the public World of Warcraft game data API through a GraphQL interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viglucci/wow-game-data-graphql-server.git"
+  },
+  "author": "Kevin Viglucci <kviglucci@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viglucci/wow-game-data-graphql-server/issues"
+  },
+  "homepage": "https://github.com/viglucci/wow-game-data-graphql-server#readme"
+}
