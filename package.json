@@ -26,6 +26,7 @@
         "body-parser": "1.18.3",
         "express": "4.16.2",
         "graphql": "^14.1.1",
+        "graphql-resolvers": "^0.3.2",
         "helmet": "3.13.0",
         "inversify": "^4.13.0",
         "inversify-binding-decorators": "^4.0.0",
