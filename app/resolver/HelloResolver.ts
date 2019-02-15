@@ -4,7 +4,9 @@ import { provide } from "inversify-binding-decorators";
 export default class HelloResolver {
   getDefinition() {
     return {
-      hello: this.resolveHello
+      Query: {
+        hello: () => "hello world"
+      }
     };
   }
 

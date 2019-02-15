@@ -1,17 +1,14 @@
 import "reflect-metadata"; // must come first!
-import { ApolloServer, gql } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import { InversifyExpressServer } from "inversify-express-utils";
 import * as path from "path";
 import * as swagger from "swagger-express-ts";
-// import { combineResolvers } from "graphql-resolvers";
-// import * as hello from "./hello/_index";
+import { importSchema } from "graphql-import";
+import ResolverMapFactory from "./resolver/ResolverMapFactory";
 
-// load all injectable entities.
-// the @provide() annotation will then automatically register them.
 import "./ioc/loader";
-
 import { container } from "./ioc/ioc";
 
 let server = new InversifyExpressServer(container);
@@ -47,26 +44,13 @@ server.setConfig(app => {
 
   app.use(bodyParser.json());
 
-  const typeDefs = gql`
-    type Query {
-      hello: String
-    }
-  `;
-
-  // // Provide resolver functions for your schema fields
-  // const helloResolver: hello.HelloResolver = container.get("HelloResolver");
-  // const resolvers = combineResolvers(helloResolver.getDefinition());
-
+  const typeDefs = importSchema(`${__dirname}/graphql/schema.graphql`);
   // Provide resolver functions for your schema fields
-  const resolvers = {
-    Query: {
-      hello: () => "Hello world!"
-    }
-  };
+  const resolverMap = ResolverMapFactory.makeMap();
 
   const server = new ApolloServer({
     typeDefs,
-    resolvers,
+    resolvers: resolverMap,
     introspection: true,
     playground: true
   });
