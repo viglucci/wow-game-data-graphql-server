@@ -16,4 +16,4 @@ npm run dev
 
 ## Open
 
-Visit http://localhost:3000/playground in your browser.
+Visit http://localhost:3000/ in your browser.
