@@ -47,7 +47,6 @@ server.setConfig(app => {
   const typeDefs = gql`
     ${schema}
   `;
-  console.log(typeDefs);
   // Provide resolver functions for your schema fields
   const resolverMap = ResolverMapFactory.makeMap();
 
