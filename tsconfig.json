@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "target": "es6",
+    "lib": ["es6"],
     "typeRoots": ["node_modules/@types/"],
     "noImplicitAny": false,
-    "sourceMap": false,
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
+    "esModuleInterop": true,
     "outDir": "dist",
     "rootDir": "app"
   },

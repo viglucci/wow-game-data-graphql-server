@@ -8,7 +8,8 @@ import {
 
 let container = new Container({
   autoBindInjectable: true,
-  defaultScope: "Singleton"
+  defaultScope: "Singleton",
+  skipBaseClassChecks: true
 });
 
 container.load(buildProviderModule());

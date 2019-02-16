@@ -1,9 +1,9 @@
 import { injectable } from "../ioc/ioc";
-import * as config from "config";
+import config from "config";
 
 @injectable()
 export default class ConfigManager {
-  get(key): any {
+  get(key: string): any {
     return config.get(key);
   }
 }

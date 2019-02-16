@@ -1,7 +1,7 @@
 import { container, injectable } from "../ioc/ioc";
 import HelloResolver from "./HelloResolver";
 import RaceResolver from "./RaceResolver";
-import * as extend from "extend";
+import extend from "extend";
 
 @injectable()
 export default class ResolverMapFactory {

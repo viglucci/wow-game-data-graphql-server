@@ -5,16 +5,16 @@ import {
   ApiPath,
   SwaggerDefinitionConstant
 } from "swagger-express-ts";
-import HelloService from "../../../service/HelloService";
+import RacesDataSource from "../../../datasource/RacesDataSource";
 
 @ApiPath({
-  path: "/api/hello",
-  name: "Hello API"
+  path: "/api/races",
+  name: "Races API"
 })
-@controller("/api/hello")
-export default class HelloController {
-  @inject(HelloService)
-  private helloService: HelloService;
+@controller("/api/races")
+export default class RacesController {
+  @inject(RacesDataSource)
+  private racesDataSource: RacesDataSource;
 
   @ApiOperationGet({
     path: "/",
@@ -28,6 +28,6 @@ export default class HelloController {
   })
   @httpGet("/")
   public async getAll(): Promise<any> {
-    return this.helloService.getHello();
+    return this.racesDataSource.getRaces();
   }
 }

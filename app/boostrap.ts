@@ -1,14 +1,14 @@
 import "reflect-metadata"; // must come first!
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer, gql } from "apollo-server-express";
 import * as bodyParser from "body-parser";
 import * as express from "express";
+import { importSchema } from "graphql-import";
 import { InversifyExpressServer } from "inversify-express-utils";
 import * as path from "path";
 import * as swagger from "swagger-express-ts";
-import { importSchema } from "graphql-import";
-import ResolverMapFactory from "./resolver/ResolverMapFactory";
-import "./ioc/loader";
 import { container } from "./ioc/ioc";
+import "./ioc/loader";
+import ResolverMapFactory from "./resolver/ResolverMapFactory";
 
 let server = new InversifyExpressServer(container);
 
@@ -43,7 +43,11 @@ server.setConfig(app => {
 
   app.use(bodyParser.json());
 
-  const typeDefs = importSchema(`${__dirname}/graphql/schema.graphql`);
+  const schema = importSchema(`${__dirname}/graphql/schema.graphql`);
+  const typeDefs = gql`
+    ${schema}
+  `;
+  console.log(typeDefs);
   // Provide resolver functions for your schema fields
   const resolverMap = ResolverMapFactory.makeMap();
 

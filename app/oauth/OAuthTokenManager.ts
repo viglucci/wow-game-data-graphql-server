@@ -1,11 +1,12 @@
 import { injectable, inject } from "../ioc/ioc";
-import { create, OAuthClient } from "simple-oauth2";
+import { create, OAuthClient, AccessToken } from "simple-oauth2";
 import ConfigManager from "../config/Config";
 
 @injectable()
 export default class OAuthTokenManager {
   private oauth2: OAuthClient;
   private configManager: ConfigManager;
+  private token: AccessToken;
 
   constructor(
     @inject(ConfigManager)
@@ -24,8 +25,13 @@ export default class OAuthTokenManager {
   }
 
   async getToken() {
-    const result = await this.oauth2.clientCredentials.getToken({});
-    const accessToken = this.oauth2.accessToken.create(result);
-    return accessToken;
+    if (this.token && !this.token.expired()) {
+      return this.token.token;
+    } else {
+      const getTokenResponse = await this.oauth2.clientCredentials.getToken({});
+      const accessToken = this.oauth2.accessToken.create(getTokenResponse);
+      this.token = accessToken;
+      return accessToken.token;
+    }
   }
 }

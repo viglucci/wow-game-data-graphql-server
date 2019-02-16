@@ -1,5 +1,5 @@
-import * as matchSorter from "match-sorter";
-import * as names from "starwars-names";
+import matchSorter from "match-sorter";
+import names from "starwars-names";
 import { injectable } from "inversify";
 
 @injectable()
