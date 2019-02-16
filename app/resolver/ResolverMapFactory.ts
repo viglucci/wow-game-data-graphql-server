@@ -1,19 +1,22 @@
-import { container, injectable } from "../ioc/ioc";
-import HelloResolver from "./HelloResolver";
-import RaceResolver from "./RaceResolver";
 import extend from "extend";
+import { injectable, inject } from "../ioc/ioc";
+import RaceResolver from "./RaceResolver";
+import FactionResolver from "./FactionResolver";
 
 @injectable()
 export default class ResolverMapFactory {
-  public static makeMap(): any {
-    const helloResolver: HelloResolver = container.get(HelloResolver);
-    const raceResolver: RaceResolver = container.get(RaceResolver);
+  @inject(RaceResolver)
+  private raceResolver: RaceResolver;
 
+  @inject(FactionResolver)
+  private factionResolver: FactionResolver;
+
+  public makeMap(): any {
     const map = extend(
       true,
       {},
-      helloResolver.getDefinition(),
-      raceResolver.getDefinition()
+      this.raceResolver.getDefinition(),
+      this.factionResolver.getDefinition()
     );
 
     return map;

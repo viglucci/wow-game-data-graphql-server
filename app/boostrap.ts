@@ -9,6 +9,7 @@ import * as swagger from "swagger-express-ts";
 import { container } from "./ioc/ioc";
 import "./ioc/loader";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
+import RacesDataSource from "./datasource/RacesDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -47,12 +48,20 @@ server.setConfig(app => {
   const typeDefs = gql`
     ${schema}
   `;
+
   // Provide resolver functions for your schema fields
-  const resolverMap = ResolverMapFactory.makeMap();
+  const resolverMapFactory = container.get(ResolverMapFactory);
+  const resolverMap = resolverMapFactory.makeMap();
 
   const server = new ApolloServer({
     typeDefs,
     resolvers: resolverMap,
+    dataSources: () => {
+      const dataSources = {
+        racesAPI: container.get(RacesDataSource)
+      };
+      return dataSources;
+    },
     introspection: true,
     playground: true
   });

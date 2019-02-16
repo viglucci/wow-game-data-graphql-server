@@ -1,11 +1,13 @@
 import { injectable } from "../ioc/ioc";
 
 @injectable()
-export default class RaceResolver {
+export default class FactionResolver {
   getDefinition() {
     return {
-      Query: {
-        faction: f => f
+      Race: {
+        faction: (race, { id }, { dataSources }) => {
+          return race.faction;
+        }
       }
     };
   }

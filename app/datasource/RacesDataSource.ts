@@ -1,16 +1,15 @@
-import { injectable, inject } from "../ioc/ioc";
+import { injectable } from "../ioc/ioc";
 import GameDataAPIDataSource from "./GameDataAPIDataSource";
 
 @injectable()
-export default class RacesDataSource {
-  @inject(GameDataAPIDataSource)
-  private gdapi: GameDataAPIDataSource;
-
-  public async getRaces(): Promise<any> {
-    return this.gdapi.getResource("/race/index", {
+export default class RacesDataSource extends GameDataAPIDataSource {
+  public async getAllRaces(): Promise<any> {
+    const raceIndex = await this.getResource("/race/index", {
       namespace: "static-us"
     });
+    const raceFetches = raceIndex.races.map(async raceLink => {
+      return this.getResource(raceLink.key);
+    });
+    return await Promise.all(raceFetches);
   }
-
-  getRace(): any {}
 }

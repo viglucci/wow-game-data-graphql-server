@@ -1,18 +1,15 @@
 import { injectable } from "../ioc/ioc";
 
-const raceIndex = require("./races.json");
-const race = require("./race.json");
-
 @injectable()
 export default class RaceResolver {
   getDefinition() {
     return {
       Query: {
-        races: () => {
-          return raceIndex.races;
+        races: async (root, args, { dataSources }) => {
+          return await dataSources.racesAPI.getAllRaces();
         },
-        race: () => {
-          return race;
+        race: async (root, { id }, { dataSources }) => {
+          return await dataSources.racesAPI.getRace(id);
         }
       }
     };

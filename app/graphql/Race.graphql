@@ -6,5 +6,5 @@ type Race {
   id: ID
   name: LocalizedString
   gender_name: LocalizedGenderedName
-  faction: Faction
+  faction: [Faction]
 }

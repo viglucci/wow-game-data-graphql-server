@@ -1,10 +1,7 @@
-import {
-  RequestOptions,
-  RESTDataSource,
-  Response
-} from "apollo-datasource-rest";
+import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
 import { inject, injectable } from "inversify";
 import OAuthTokenManager from "../oauth/OAuthTokenManager";
+import IDocumentLink from "../interfaces/IDocumentLink";
 
 @injectable()
 export default class GameDataAPIDataSource extends RESTDataSource {
@@ -17,12 +14,21 @@ export default class GameDataAPIDataSource extends RESTDataSource {
     super();
   }
 
-  async willSendRequest(request: RequestOptions): Promise<void> {
+  public async willSendRequest(request: RequestOptions): Promise<void> {
     const token = await this.tokenManager.getToken();
     request.headers.set("Authorization", `Bearer ${token.access_token}`);
   }
 
-  getResource(path: string, params?: any): Promise<Response> {
-    return this.get(path, params);
+  public getResource(
+    pathOrDocumentLink: string | IDocumentLink,
+    params?: any
+  ): Promise<any> {
+    let resourcePath: string;
+    if (typeof pathOrDocumentLink === "string") {
+      resourcePath = pathOrDocumentLink;
+    } else {
+      resourcePath = pathOrDocumentLink.href;
+    }
+    return this.get(resourcePath, params);
   }
 }

@@ -28,6 +28,6 @@ export default class RacesController {
   })
   @httpGet("/")
   public async getAll(): Promise<any> {
-    return this.racesDataSource.getRaces();
+    return this.racesDataSource.getAllRaces();
   }
 }
