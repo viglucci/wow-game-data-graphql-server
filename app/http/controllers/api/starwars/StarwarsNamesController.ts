@@ -1,17 +1,17 @@
-import { inject } from "../../../ioc/ioc";
+import { inject } from "../../../../ioc/ioc";
 import { controller, httpGet, queryParam } from "inversify-express-utils";
 import {
   ApiOperationGet,
   ApiPath,
   SwaggerDefinitionConstant
 } from "swagger-express-ts";
-import StarwarsNamesService from "../../../service/StarwarsNamesService";
+import StarwarsNamesService from "../../../../service/StarwarsNamesService";
 
 @ApiPath({
-  path: "/api/starwars-names",
+  path: "/api/starwars/names",
   name: "Starwars Names API"
 })
-@controller("/api/starwars-names")
+@controller("/api/starwars/names")
 export default class StarWarsNamesController {
   @inject(StarwarsNamesService)
   private starwarsNamesService: StarwarsNamesService;

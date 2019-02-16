@@ -1,3 +1,6 @@
-export { default as StarwarsNamesController } from "./StarwarsNamesController";
-export { default as HelloController } from "./HelloController";
-export { default as RacesController } from "./RacesController";
+export {
+  default as StarwarsNamesController
+} from "./starwars/StarwarsNamesController";
+export {
+  default as WoWRacesController
+} from "./worldofwarcraft/WoWRacesController";
