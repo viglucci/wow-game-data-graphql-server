@@ -1,18 +1,24 @@
-import { injectable } from "../ioc/ioc";
+import { injectable, inject } from "../ioc/ioc";
 import { create, OAuthClient } from "simple-oauth2";
+import ConfigManager from "../config/Config";
 
 @injectable()
 export default class OAuthTokenManager {
   private oauth2: OAuthClient;
+  private configManager: ConfigManager;
 
-  constructor() {
+  constructor(
+    @inject(ConfigManager)
+    configManager: ConfigManager
+  ) {
+    this.configManager = configManager;
     this.oauth2 = create({
       client: {
-        id: "<client-id>",
-        secret: "<client-secret>"
+        id: this.configManager.get("oauth.client_id"),
+        secret: this.configManager.get("oauth.client_secret")
       },
       auth: {
-        tokenHost: ""
+        tokenHost: this.configManager.get("oauth.auth.tokenHost")
       }
     });
   }

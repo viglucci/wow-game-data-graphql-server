@@ -1,6 +1,10 @@
 # import LocalizedString from 'LocalizedString.graphql'
+# import LocalizedGenderedName from 'LocalizedGenderedName.graphql'
+# import Faction from 'Faction.graphql'
 
 type Race {
-  # name: LocalizedString
-  name: String
+  id: ID
+  name: LocalizedString
+  gender_name: LocalizedGenderedName
+  faction: Faction
 }

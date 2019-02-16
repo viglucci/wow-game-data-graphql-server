@@ -1,5 +1,4 @@
 import { inject, injectable } from "../ioc/ioc";
-import "reflect-metadata";
 import OAuthTokenManager from "./OAuthTokenManager";
 
 @injectable()

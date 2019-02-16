@@ -2,5 +2,6 @@
 
 type Query {
   hello: String
+  race: Race
   races: [Race]
 }

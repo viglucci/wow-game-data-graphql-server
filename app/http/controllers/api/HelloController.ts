@@ -6,6 +6,7 @@ import {
   SwaggerDefinitionConstant
 } from "swagger-express-ts";
 import HelloService from "../../../service/HelloService";
+import OAuthTokenManager from "../../../client/OAuthTokenManager";
 
 @ApiPath({
   path: "/api/hello",
@@ -15,6 +16,9 @@ import HelloService from "../../../service/HelloService";
 export default class HelloController {
   @inject(HelloService)
   private helloService: HelloService;
+
+  @inject(OAuthTokenManager)
+  private tokenManager: OAuthTokenManager;
 
   @ApiOperationGet({
     path: "/",
@@ -27,7 +31,9 @@ export default class HelloController {
     }
   })
   @httpGet("/")
-  public getAll(): string {
+  public async getAll(): Promise<any> {
+    const token = await this.tokenManager.getToken();
+    console.log(token);
     return this.helloService.getHello();
   }
 }

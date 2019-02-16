@@ -1,0 +1,6 @@
+# import LocalizedString from 'LocalizedString.graphql'
+
+type LocalizedGenderedName {
+  male_name: LocalizedString
+  female_name: LocalizedString
+}

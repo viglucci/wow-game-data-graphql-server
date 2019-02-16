@@ -8,12 +8,7 @@ export default class RaceResolver {
   getDefinition() {
     return {
       Query: {
-        races: () => {
-          return raceIndex.races;
-        },
-        race: () => {
-          return race;
-        }
+        faction: f => f
       }
     };
   }
