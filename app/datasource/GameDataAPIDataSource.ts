@@ -1,7 +1,10 @@
-import { RESTDataSource, RequestOptions } from "apollo-datasource-rest";
+import {
+  RequestOptions,
+  RESTDataSource,
+  Response
+} from "apollo-datasource-rest";
+import { inject, injectable } from "inversify";
 import OAuthTokenManager from "../oauth/OAuthTokenManager";
-import { decorate, inject, injectable } from "inversify";
-decorate(injectable(), RESTDataSource);
 
 @injectable()
 export default class GameDataAPIDataSource extends RESTDataSource {
@@ -10,7 +13,7 @@ export default class GameDataAPIDataSource extends RESTDataSource {
 
   public baseURL = "https://us.api.blizzard.com/data/wow/";
 
-  public constructor() {
+  constructor() {
     super();
   }
 
@@ -19,7 +22,7 @@ export default class GameDataAPIDataSource extends RESTDataSource {
     request.headers.set("Authorization", `Bearer ${token.access_token}`);
   }
 
-  getResource(path: string, params?: any): Promise<any> {
+  getResource(path: string, params?: any): Promise<Response> {
     return this.get(path, params);
   }
 }
