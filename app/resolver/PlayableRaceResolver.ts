@@ -1,7 +1,7 @@
 import { injectable } from "../ioc/ioc";
 
 @injectable()
-export default class RaceResolver {
+export default class PlayableRaceResolver {
   getDefinition() {
     return {
       Query: {

@@ -1,0 +1,10 @@
+# import LocalizedString from 'LocalizedString.graphql'
+# import LocalizedGenderedName from 'LocalizedGenderedName.graphql'
+# import Faction from 'Faction.graphql'
+
+type PlayableRace {
+  id: ID
+  name: LocalizedString
+  gender_name: LocalizedGenderedName
+  faction: [Faction]
+}

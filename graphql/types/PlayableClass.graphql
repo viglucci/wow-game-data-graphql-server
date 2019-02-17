@@ -2,7 +2,7 @@
 # import LocalizedGenderedName from 'LocalizedGenderedName.graphql'
 # import Faction from 'Faction.graphql'
 
-type Race {
+type PlayableClass {
   id: ID
   name: LocalizedString
   gender_name: LocalizedGenderedName

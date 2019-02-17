@@ -1,17 +1,13 @@
 import extend from "extend";
 import { injectable, inject } from "../ioc/ioc";
-import RaceResolver from "./RaceResolver";
-import FactionResolver from "./FactionResolver";
+import PlayableRaceResolver from "./PlayableRaceResolver";
 import RealmResolver from "./RealmResolver";
 import ConnectedRealmResolver from "./ConnectedRealmResolver";
 
 @injectable()
 export default class ResolverMapFactory {
-  @inject(RaceResolver)
-  private raceResolver: RaceResolver;
-
-  @inject(FactionResolver)
-  private factionResolver: FactionResolver;
+  @inject(PlayableRaceResolver)
+  private raceResolver: PlayableRaceResolver;
 
   @inject(RealmResolver)
   private realmResolver: RealmResolver;
@@ -24,7 +20,6 @@ export default class ResolverMapFactory {
       true,
       {},
       this.raceResolver.getDefinition(),
-      this.factionResolver.getDefinition(),
       this.realmResolver.getDefinition(),
       this.connectedRealmResolver.getDefinition()
     );
