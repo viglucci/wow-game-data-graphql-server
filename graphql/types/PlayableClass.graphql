@@ -5,6 +5,6 @@
 type PlayableClass {
   id: ID
   name: LocalizedString
-  gender_name: LocalizedGenderedName
+  genderName: LocalizedGenderedName
   faction: [Faction]
 }
