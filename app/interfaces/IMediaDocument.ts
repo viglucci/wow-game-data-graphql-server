@@ -1,4 +1,4 @@
-import IMediaDocumentAsset from "./IMediaListItem";
+import IMediaDocumentAsset from "./IMediaDocumentAsset";
 
 export default interface IMediaDocument {
   assets: [IMediaDocumentAsset];
