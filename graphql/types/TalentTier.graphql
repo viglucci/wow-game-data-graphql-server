@@ -1,0 +1,6 @@
+# import Talent from 'Talent.graphql'
+
+type TalentTier {
+  level: Int
+  talents: [Talent]
+}

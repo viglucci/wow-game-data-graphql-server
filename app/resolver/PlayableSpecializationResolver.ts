@@ -22,6 +22,7 @@ export default class PlayableSpecializationResolver {
         }
       },
       PlayableSpecialization: {
+        description: (specialization: any) => specialization.gender_description,
         class: async (
           specialization: any,
           args: any,
@@ -30,6 +31,13 @@ export default class PlayableSpecializationResolver {
           return await dataSources.classes.getClassById(
             specialization.playable_class.id
           );
+        },
+        talents: async (
+          specialization: any,
+          args: any,
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
+          return specialization.talent_tiers;
         }
       }
     };

@@ -2,6 +2,7 @@
 # import LocalizedGenderedString from 'LocalizedGenderedString.graphql'
 # import PlayableSpecialization from 'PlayableSpecialization.graphql'
 # import PlayableRole from 'PlayableRole.graphql'
+# import TalentTier from 'TalentTier.graphql'
 
 type PlayableSpecialization {
   id: ID!
@@ -9,4 +10,5 @@ type PlayableSpecialization {
   description: LocalizedGenderedString
   class: PlayableClass
   role: PlayableRole
+  talents: [TalentTier]
 }
