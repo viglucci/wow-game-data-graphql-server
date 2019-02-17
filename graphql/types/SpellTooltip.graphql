@@ -1,5 +1,0 @@
-# import LocalizedString from 'LocalizedString.graphql'
-
-type SpellTooltip {
-  description: LocalizedString
-}
