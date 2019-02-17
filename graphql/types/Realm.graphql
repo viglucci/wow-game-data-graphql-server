@@ -1,0 +1,17 @@
+# import Region from 'Region.graphql'
+# import RealmType from 'RealmType.graphql'
+# import ConnectedRealm from 'ConnectedRealm.graphql'
+# import LocalizedString from 'LocalizedString.graphql'
+
+type Realm {
+  id: ID
+  name: LocalizedString
+  slug: String
+  connectedRealm: ConnectedRealm
+  region: Region
+  category: LocalizedString
+  locale: String
+  timezone: String
+  type: RealmType
+  isTournamentRealm: Boolean
+}

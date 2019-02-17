@@ -1,6 +1,6 @@
 {
   "verbose": true,
-  "ext": "*.ts,graphql",
-  "exec": "ts-node ./app/start.ts",
+  "ext": "js,ts,json,graphql",
+  "exec": "ts-node ./app/start.ts | bunyan",
   "ignore": ["*.test.js", "fixtures/*"]
 }

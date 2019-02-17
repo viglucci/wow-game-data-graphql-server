@@ -1,5 +1,5 @@
-import { injectable } from "../ioc/ioc";
 import config from "config";
+import { injectable } from "inversify";
 
 @injectable()
 export default class ConfigManager {

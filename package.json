@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/viglucci/wow-game-data-graphql-server#readme",
   "dependencies": {
+    "@types/bunyan": "^1.8.5",
     "apollo-datasource-rest": "^0.3.1",
     "apollo-server": "^2.4.2",
     "apollo-server-express": "^2.4.2",
     "body-parser": "1.18.3",
+    "bunyan": "^1.8.12",
     "config": "^3.0.1",
     "dotenv": "^6.2.0",
     "express": "4.16.2",

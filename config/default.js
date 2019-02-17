@@ -6,5 +6,8 @@ module.exports = {
       tokenHost: "https://us.battle.net",
       tokenPath: "/oauth/token"
     }
+  },
+  logging: {
+    level: "debug"
   }
 };

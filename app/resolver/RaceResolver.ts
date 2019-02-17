@@ -6,10 +6,10 @@ export default class RaceResolver {
     return {
       Query: {
         races: async (root, args, { dataSources }) => {
-          return await dataSources.racesAPI.getAllRaces();
+          return await dataSources.races.getAllRaces();
         },
         race: async (root, { id }, { dataSources }) => {
-          return await dataSources.racesAPI.getRace(id);
+          return await dataSources.races.getRace(id);
         }
       }
     };

@@ -10,6 +10,8 @@ import { container } from "./ioc/ioc";
 import "./ioc/loader";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
 import RacesDataSource from "./datasource/RacesDataSource";
+import RealmsDataSource from "./datasource/RealmsDataSource";
+import { InMemoryLRUCache } from "apollo-server-caching";
 
 let server = new InversifyExpressServer(container);
 
@@ -44,7 +46,7 @@ server.setConfig(app => {
 
   app.use(bodyParser.json());
 
-  const schema = importSchema(`${__dirname}/graphql/schema.graphql`);
+  const schema = importSchema(`graphql/schema.graphql`);
   const typeDefs = gql`
     ${schema}
   `;
@@ -58,7 +60,8 @@ server.setConfig(app => {
     resolvers: resolverMap,
     dataSources: () => {
       const dataSources = {
-        racesAPI: container.get(RacesDataSource)
+        races: container.get(RacesDataSource),
+        realms: container.get(RealmsDataSource)
       };
       return dataSources;
     },

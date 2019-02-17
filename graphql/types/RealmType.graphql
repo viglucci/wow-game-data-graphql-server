@@ -1,0 +1,6 @@
+# import LocalizedString from 'LocalizedString.graphql'
+
+type RealmType {
+  type: String
+  name: LocalizedString
+}

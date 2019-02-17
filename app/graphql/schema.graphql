@@ -1,8 +1,0 @@
-# import Race from 'Race.graphql'
-# import Faction from 'Faction.graphql'
-
-type Query {
-  race: Race
-  races: [Race]
-  faction: Faction
-}

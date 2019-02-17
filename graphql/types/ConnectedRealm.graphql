@@ -1,0 +1,8 @@
+# import Region from 'Region.graphql'
+# import ConnectedRealm from 'ConnectedRealm.graphql'
+
+type ConnectedRealm {
+  id: ID
+  name: String
+  slug: String
+}

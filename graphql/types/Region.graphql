@@ -1,0 +1,7 @@
+# import LocalizedString from 'LocalizedString.graphql'
+
+type Region {
+  id: ID
+  name: LocalizedString
+  tag: String
+}

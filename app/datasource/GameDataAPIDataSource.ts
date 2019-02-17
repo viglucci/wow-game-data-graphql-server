@@ -2,11 +2,15 @@ import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
 import { inject, injectable } from "inversify";
 import OAuthTokenManager from "../oauth/OAuthTokenManager";
 import IDocumentLink from "../interfaces/IDocumentLink";
+import Logger from "../logging/Logger";
 
 @injectable()
 export default class GameDataAPIDataSource extends RESTDataSource {
   @inject(OAuthTokenManager)
   protected tokenManager: OAuthTokenManager;
+
+  @inject(Logger)
+  protected logger: Logger;
 
   public baseURL = "https://us.api.blizzard.com/data/wow/";
 
@@ -29,6 +33,10 @@ export default class GameDataAPIDataSource extends RESTDataSource {
     } else {
       resourcePath = pathOrDocumentLink.href;
     }
-    return this.get(resourcePath, params);
+    return this.get(resourcePath, params, {
+      cacheOptions: {
+        ttl: 60 * 5
+      }
+    });
   }
 }
