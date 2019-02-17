@@ -3,6 +3,7 @@
 # import Realm from 'types/Realm.graphql'
 # import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
+# import PowerType from 'types/PowerType.graphql'
 
 type Query {
   race(id: ID!): PlayableRace
@@ -13,4 +14,6 @@ type Query {
   realms: [Realm]
   connectedRealm(id: ID!): ConnectedRealm
   connectedRealms: [ConnectedRealm]
+  powerType(id: ID!): PowerType
+  powerTypes: [PowerType]
 }

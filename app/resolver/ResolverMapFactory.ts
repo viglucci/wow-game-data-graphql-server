@@ -5,6 +5,7 @@ import RealmResolver from "./RealmResolver";
 import ConnectedRealmResolver from "./ConnectedRealmResolver";
 import PlayableClassResolver from "./PlayableClassResolver";
 import LocalizedGenderedNameResolver from "./LocalizedGenderedNameResolver";
+import PowerTypeResolver from "./PowerTypeResolver";
 
 @injectable()
 export default class ResolverMapFactory {
@@ -23,6 +24,9 @@ export default class ResolverMapFactory {
   @inject(LocalizedGenderedNameResolver)
   private localizedGenderedNameResolver: LocalizedGenderedNameResolver;
 
+  @inject(PowerTypeResolver)
+  private powerTypeResolver: PowerTypeResolver;
+
   public makeMap(): any {
     const map = extend(
       true,
@@ -31,7 +35,8 @@ export default class ResolverMapFactory {
       this.classResolver.getDefinition(),
       this.realmResolver.getDefinition(),
       this.connectedRealmResolver.getDefinition(),
-      this.localizedGenderedNameResolver.getDefinition()
+      this.localizedGenderedNameResolver.getDefinition(),
+      this.powerTypeResolver.getDefinition()
     );
 
     return map;
