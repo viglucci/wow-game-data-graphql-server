@@ -1,0 +1,6 @@
+# import LocalizedString from 'LocalizedString.graphql'
+
+type PlayableRole {
+  type: String
+  name: LocalizedString
+}

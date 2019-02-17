@@ -1,10 +1,10 @@
 import { injectable, inject } from "../ioc/ioc";
 
 @injectable()
-export default class LocalizedGenderedNameResolver {
+export default class LocalizedGenderedStringResolver {
   getDefinition() {
     return {
-      LocalizedGenderedName: {
+      LocalizedGenderedString: {
         male: (name: any) => {
           if (name.male) {
             return name.male;

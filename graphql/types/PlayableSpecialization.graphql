@@ -1,0 +1,12 @@
+# import LocalizedString from 'LocalizedString.graphql'
+# import LocalizedGenderedString from 'LocalizedGenderedString.graphql'
+# import PlayableSpecialization from 'PlayableSpecialization.graphql'
+# import PlayableRole from 'PlayableRole.graphql'
+
+type PlayableSpecialization {
+  id: ID!
+  name: LocalizedString
+  description: LocalizedGenderedString
+  playableClass: PlayableClass
+  playableRole: PlayableRole
+}

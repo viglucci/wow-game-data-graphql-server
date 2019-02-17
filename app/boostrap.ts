@@ -6,14 +6,15 @@ import { importSchema } from "graphql-import";
 import { InversifyExpressServer } from "inversify-express-utils";
 import * as path from "path";
 import * as swagger from "swagger-express-ts";
+import ClassesDataSource from "./datasource/ClassesDataSource";
+import PowerTypesDataSource from "./datasource/PowerTypesDataSource";
+import RacesDataSource from "./datasource/RacesDataSource";
+import RealmsDataSource from "./datasource/RealmsDataSource";
+import SpecializationsDataSource from "./datasource/SpecializationsDataSource";
+import IDataSources from "./interfaces/IDataSources";
 import { container } from "./ioc/ioc";
 import "./ioc/loader";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
-import RacesDataSource from "./datasource/RacesDataSource";
-import RealmsDataSource from "./datasource/RealmsDataSource";
-import { InMemoryLRUCache } from "apollo-server-caching";
-import ClassesDataSource from "./datasource/ClassesDataSource";
-import PowerTypesDataSource from "./datasource/PowerTypesDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -57,18 +58,21 @@ server.setConfig(app => {
   const resolverMapFactory = container.get(ResolverMapFactory);
   const resolverMap = resolverMapFactory.makeMap();
 
+  const dataSourcesFactory = (): IDataSources => {
+    const dataSources: IDataSources = {
+      races: container.get(RacesDataSource),
+      realms: container.get(RealmsDataSource),
+      classes: container.get(ClassesDataSource),
+      specializations: container.get(SpecializationsDataSource),
+      powerTypes: container.get(PowerTypesDataSource)
+    };
+    return dataSources;
+  };
+
   const server = new ApolloServer({
     typeDefs,
     resolvers: resolverMap,
-    dataSources: () => {
-      const dataSources = {
-        races: container.get(RacesDataSource),
-        realms: container.get(RealmsDataSource),
-        classes: container.get(ClassesDataSource),
-        powerTypes: container.get(PowerTypesDataSource)
-      };
-      return dataSources;
-    },
+    dataSources: dataSourcesFactory,
     introspection: true,
     playground: true
   });

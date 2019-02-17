@@ -1,9 +1,10 @@
-# import PlayableRace from 'types/PlayableRace.graphql'
-# import PlayableClass from 'types/PlayableClass.graphql'
-# import Realm from 'types/Realm.graphql'
 # import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
+# import PlayableRace from 'types/PlayableRace.graphql'
+# import PlayableClass from 'types/PlayableClass.graphql'
+# import PlayableSpecialization from 'types/PlayableSpecialization.graphql'
 # import PowerType from 'types/PowerType.graphql'
+# import Realm from 'types/Realm.graphql'
 
 type Query {
   race(id: ID!): PlayableRace
@@ -16,4 +17,6 @@ type Query {
   connectedRealms: [ConnectedRealm]
   powerType(id: ID!): PowerType
   powerTypes: [PowerType]
+  specialization(id: ID!): PlayableSpecialization
+  specializations: [PlayableSpecialization]
 }

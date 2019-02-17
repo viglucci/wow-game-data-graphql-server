@@ -5,7 +5,7 @@ import IDocumentLink from "../interfaces/IDocumentLink";
 import Logger from "../logging/Logger";
 
 @injectable()
-export default class GameDataAPIDataSource extends RESTDataSource {
+export default abstract class GameDataAPIDataSource extends RESTDataSource {
   @inject(OAuthTokenManager)
   protected tokenManager: OAuthTokenManager;
 
