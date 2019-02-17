@@ -5,12 +5,15 @@ export default class PlayableRaceResolver {
   getDefinition() {
     return {
       Query: {
-        races: async (root, args, { dataSources }) => {
+        races: async (race, args, { dataSources }) => {
           return await dataSources.races.getAllRaces();
         },
-        race: async (root, { id }, { dataSources }) => {
-          return await dataSources.races.getRace(id);
+        race: async (race, { id }, { dataSources }) => {
+          return await dataSources.races.getRaceById(id);
         }
+      },
+      PlayableRace: {
+        genderName: (race: any) => race.gender_name
       }
     };
   }

@@ -12,4 +12,10 @@ export default class RacesDataSource extends GameDataAPIDataSource {
     });
     return await Promise.all(raceFetches);
   }
+
+  public async getRaceById(id: string): Promise<any> {
+    return await this.getResource(`/race/${id}`, {
+      namespace: "static-us"
+    });
+  }
 }

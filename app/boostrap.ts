@@ -12,6 +12,7 @@ import ResolverMapFactory from "./resolver/ResolverMapFactory";
 import RacesDataSource from "./datasource/RacesDataSource";
 import RealmsDataSource from "./datasource/RealmsDataSource";
 import { InMemoryLRUCache } from "apollo-server-caching";
+import ClassesDataSource from "./datasource/ClassesDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -61,7 +62,8 @@ server.setConfig(app => {
     dataSources: () => {
       const dataSources = {
         races: container.get(RacesDataSource),
-        realms: container.get(RealmsDataSource)
+        realms: container.get(RealmsDataSource),
+        classes: container.get(ClassesDataSource)
       };
       return dataSources;
     },
