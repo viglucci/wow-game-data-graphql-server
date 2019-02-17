@@ -1,0 +1,5 @@
+# import Asset from 'Asset.graphql'
+
+type Media {
+  icon: Asset
+}

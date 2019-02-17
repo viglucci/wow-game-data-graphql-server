@@ -1,6 +1,5 @@
 import { injectable } from "../ioc/ioc";
 import GameDataAPIDataSource from "./GameDataAPIDataSource";
-import IDocumentLink from "../interfaces/IDocumentLink";
 import INamedDocumentLink from "../interfaces/INamedDocumentLink";
 
 @injectable()
@@ -19,6 +18,12 @@ export default class ClassesDataSource extends GameDataAPIDataSource {
 
   public async getClassById(id: string): Promise<any> {
     return await this.getResource(`/playable-class/${id}`, {
+      namespace: "static-us"
+    });
+  }
+
+  public async getMediaDocumentById(id: string): Promise<any> {
+    return await this.getResource(`/wow/media/playable-class/${id}`, {
       namespace: "static-us"
     });
   }

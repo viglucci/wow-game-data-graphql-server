@@ -1,5 +1,6 @@
 import { injectable } from "../ioc/ioc";
 import IDataSources from "../interfaces/IDataSources";
+import IMediaDocument from "../interfaces/IMediaDocument";
 
 @injectable()
 export default class PlayableClassResolver {
@@ -31,6 +32,21 @@ export default class PlayableClassResolver {
           return await dataSources.powerTypes.getPowerTypeById(
             playableClass.power_type.id
           );
+        },
+        media: async (
+          playableClass: any,
+          args: any,
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
+          const media: IMediaDocument = await dataSources.document.getDocumentFromDocumentLink(
+            playableClass.media
+          );
+          return media.assets.reduce((assetMap, asset) => {
+            assetMap[asset.key] = {
+              url: asset.value
+            };
+            return assetMap;
+          }, {});
         }
       }
     };

@@ -15,6 +15,7 @@ import IDataSources from "./interfaces/IDataSources";
 import { container } from "./ioc/ioc";
 import "./ioc/loader";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
+import DocumentDataSource from "./datasource/DocumentDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -60,6 +61,7 @@ server.setConfig(app => {
 
   const dataSourcesFactory = (): IDataSources => {
     const dataSources: IDataSources = {
+      document: container.get(DocumentDataSource),
       races: container.get(RacesDataSource),
       realms: container.get(RealmsDataSource),
       classes: container.get(ClassesDataSource),
