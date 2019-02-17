@@ -1,11 +1,13 @@
 # import Race from 'types/Race.graphql'
 # import Realm from 'types/Realm.graphql'
+# import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
 
 type Query {
   race(id: ID!): Race
   races: [Race]
-  faction(id: ID!): Faction
   realm(id: ID!): Realm
   realms: [Realm]
+  connectedRealm(id: ID!): ConnectedRealm
+  connectedRealms: [ConnectedRealm]
 }

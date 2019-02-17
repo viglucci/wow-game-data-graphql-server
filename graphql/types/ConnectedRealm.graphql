@@ -1,8 +1,12 @@
 # import Region from 'Region.graphql'
 # import ConnectedRealm from 'ConnectedRealm.graphql'
+# import RealmPopulation from 'RealmPopulation.graphql'
+# import RealmStatus from 'RealmStatus.graphql'
 
 type ConnectedRealm {
   id: ID
-  name: String
-  slug: String
+  hasQueue: Boolean
+  status: RealmStatus
+  population: RealmPopulation
+  realms: [Realm]
 }
