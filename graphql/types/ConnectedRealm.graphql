@@ -4,7 +4,7 @@
 # import RealmStatus from 'RealmStatus.graphql'
 
 type ConnectedRealm {
-  id: ID
+  id: ID!
   hasQueue: Boolean
   status: RealmStatus
   population: RealmPopulation

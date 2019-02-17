@@ -7,6 +7,6 @@ type PlayableSpecialization {
   id: ID!
   name: LocalizedString
   description: LocalizedGenderedString
-  playableClass: PlayableClass
-  playableRole: PlayableRole
+  class: PlayableClass
+  role: PlayableRole
 }

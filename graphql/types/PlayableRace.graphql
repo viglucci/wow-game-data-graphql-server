@@ -3,7 +3,7 @@
 # import Faction from 'Faction.graphql'
 
 type PlayableRace {
-  id: ID
+  id: ID!
   name: LocalizedString
   genderName: LocalizedGenderedString
   faction: [Faction]

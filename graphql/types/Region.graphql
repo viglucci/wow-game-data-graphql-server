@@ -1,7 +1,7 @@
 # import LocalizedString from 'LocalizedString.graphql'
 
 type Region {
-  id: ID
+  id: ID!
   name: LocalizedString
   tag: String
 }

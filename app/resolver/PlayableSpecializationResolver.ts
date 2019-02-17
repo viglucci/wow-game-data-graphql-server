@@ -21,8 +21,16 @@ export default class PlayableSpecializationResolver {
           return await dataSources.specializations.getSpecializationById(id);
         }
       },
-      PlayableRace: {
-        genderName: (race: any) => race.gender_name
+      PlayableSpecialization: {
+        class: async (
+          specialization: any,
+          args: any,
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
+          return await dataSources.classes.getClassById(
+            specialization.playable_class.id
+          );
+        }
       }
     };
   }

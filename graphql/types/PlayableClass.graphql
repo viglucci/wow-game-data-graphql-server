@@ -4,9 +4,8 @@
 # import PowerType from 'PowerType.graphql'
 
 type PlayableClass {
-  id: ID
+  id: ID!
   name: LocalizedString
   genderName: LocalizedGenderedString
-  faction: [Faction]
   powerType: PowerType
 }
