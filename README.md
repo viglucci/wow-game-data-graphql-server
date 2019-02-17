@@ -27,8 +27,8 @@ CLIENT_SECRET=6789
 npm run dev
 ```
 
-## Open
+## Open in your browser
 
-Visit http://localhost:3000/ for the index page.
-Visit http://localhost:3000/graphql/ for a graphql playground page.
-Visit http://localhost:3000/api-docs/swagger/ for a swagger-ui example page.
+- Visit http://localhost:3000/ for the index page.
+- Visit http://localhost:3000/graphql/ for a graphql playground page.
+- Visit http://localhost:3000/api-docs/swagger/ for a swagger-ui example page.
