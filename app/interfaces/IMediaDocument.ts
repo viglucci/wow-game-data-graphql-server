@@ -1,5 +1,5 @@
-import IMediaListItem from "./IMediaListItem";
+import IMediaDocumentAsset from "./IMediaListItem";
 
 export default interface IMediaDocument {
-  assets: [IMediaListItem];
+  assets: [IMediaDocumentAsset];
 }
