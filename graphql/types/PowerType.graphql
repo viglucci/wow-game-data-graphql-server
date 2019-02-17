@@ -1,0 +1,6 @@
+# import LocalizedString from 'LocalizedString.graphql'
+
+type PowerType {
+  id: ID
+  name: LocalizedString
+}

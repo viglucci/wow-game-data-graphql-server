@@ -13,6 +13,7 @@ import RacesDataSource from "./datasource/RacesDataSource";
 import RealmsDataSource from "./datasource/RealmsDataSource";
 import { InMemoryLRUCache } from "apollo-server-caching";
 import ClassesDataSource from "./datasource/ClassesDataSource";
+import PowerTypesDataSource from "./datasource/PowerTypesDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -63,7 +64,8 @@ server.setConfig(app => {
       const dataSources = {
         races: container.get(RacesDataSource),
         realms: container.get(RealmsDataSource),
-        classes: container.get(ClassesDataSource)
+        classes: container.get(ClassesDataSource),
+        powerTypes: container.get(PowerTypesDataSource)
       };
       return dataSources;
     },

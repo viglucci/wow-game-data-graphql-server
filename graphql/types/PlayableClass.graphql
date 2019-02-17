@@ -1,10 +1,12 @@
 # import LocalizedString from 'LocalizedString.graphql'
 # import LocalizedGenderedName from 'LocalizedGenderedName.graphql'
 # import Faction from 'Faction.graphql'
+# import PowerType from 'PowerType.graphql'
 
 type PlayableClass {
   id: ID
   name: LocalizedString
   genderName: LocalizedGenderedName
   faction: [Faction]
+  powerType: PowerType
 }

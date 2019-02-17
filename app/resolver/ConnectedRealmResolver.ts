@@ -1,5 +1,6 @@
 import { injectable, inject } from "../ioc/ioc";
 import ConnectedRealmMapper from "../mapper/ConnectedRealmMapper";
+import IDataSources from "../interfaces/IDataSources";
 
 @injectable()
 export default class ConnectedRealmResolver {
@@ -26,15 +27,15 @@ export default class ConnectedRealmResolver {
   protected async resolveConnectedRealms(
     connectedRealm: any,
     args: any,
-    { dataSources }
+    { dataSources }: { dataSources: IDataSources }
   ) {
     return await dataSources.realms.getAllConnectedRealms();
   }
 
   protected async resolveConnectedRealm(
     connectedRealm: any,
-    { id },
-    { dataSources }
+    { id }: { id: string },
+    { dataSources }: { dataSources: IDataSources }
   ) {
     return await dataSources.realms.getConnectedRealmById(id);
   }

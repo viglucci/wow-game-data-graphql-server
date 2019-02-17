@@ -1,14 +1,23 @@
 import { injectable } from "../ioc/ioc";
+import IDataSources from "../interfaces/IDataSources";
 
 @injectable()
 export default class PlayableRaceResolver {
   getDefinition() {
     return {
       Query: {
-        races: async (race, args, { dataSources }) => {
+        races: async (
+          race: any,
+          args: any,
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
           return await dataSources.races.getAllRaces();
         },
-        race: async (race, { id }, { dataSources }) => {
+        race: async (
+          race: any,
+          { id }: { id: string },
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
           return await dataSources.races.getRaceById(id);
         }
       },

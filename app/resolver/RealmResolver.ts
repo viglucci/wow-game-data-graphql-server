@@ -1,5 +1,6 @@
 import { injectable, inject } from "../ioc/ioc";
 import RealmMapper from "../mapper/RealmMapper";
+import IDataSources from "../interfaces/IDataSources";
 
 @injectable()
 export default class RealmResolver {
@@ -16,7 +17,11 @@ export default class RealmResolver {
         isTournamentRealm: (realm: any) => {
           return this.realmMapper.getIsTournamentRealm(realm);
         },
-        connectedRealm: async (realm: any, args: any, { dataSources }) => {
+        connectedRealm: async (
+          realm: any,
+          args: any,
+          { dataSources }: { dataSources: IDataSources }
+        ) => {
           return await dataSources.realms.getConnectedRealmByKey(
             realm.connected_realm
           );
@@ -25,7 +30,11 @@ export default class RealmResolver {
     };
   }
 
-  protected async resolveAllRealms(realm: any, args: any, { dataSources }) {
+  protected async resolveAllRealms(
+    realm: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
     return await dataSources.realms.getAllRealms();
   }
 
