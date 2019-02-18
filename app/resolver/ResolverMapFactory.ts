@@ -2,6 +2,8 @@ import extend from "extend";
 import { inject, injectable } from "../ioc/ioc";
 import ConnectedRealmResolver from "./ConnectedRealmResolver";
 import LocalizedGenderedStringResolver from "./LocalizedGenderedStringResolver";
+import MythicKeystonePeriodResolver from "./MythicKeystonePeriodResolver";
+import MythicKeystoneSeasonResolver from "./MythicKeystoneSeasonResolver";
 import MythicRaidLeaderboardResolver from "./MythicRaidLeaderboardResolver";
 import PlayableClassResolver from "./PlayableClassResolver";
 import PlayableRaceResolver from "./PlayableRaceResolver";
@@ -10,8 +12,6 @@ import PowerTypeResolver from "./PowerTypeResolver";
 import RealmResolver from "./RealmResolver";
 import TalentResolver from "./TalentResolver";
 import WoWTokenResolver from "./WoWTokenResolver";
-import MythicKeystonePeriodResolver from "./MythicKeystonePeriodResolver";
-import MythicKeystoneSeasonResolver from "./MythicKeystoneSeasonResolver";
 
 @injectable()
 export default class ResolverMapFactory {
