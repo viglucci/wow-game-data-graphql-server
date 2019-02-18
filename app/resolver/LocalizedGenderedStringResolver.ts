@@ -1,5 +1,4 @@
-import { injectable } from "../ioc/ioc";
-
+import { injectable } from "inversify";
 @injectable()
 export default class LocalizedGenderedStringResolver {
   getDefinition() {

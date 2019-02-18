@@ -1,59 +1,65 @@
+import { inject, injectable } from "inversify";
 import IDataSources from "../interfaces/IDataSources";
 import IMediaDocument from "../interfaces/IMediaDocument";
-import { injectable } from "../ioc/ioc";
-import IKeyValuePair from "../interfaces/IKeyValuePair";
-import IMediaMap from "../interfaces/IMediaMap";
+import MediaMapper from "../mapper/MediaMapper";
 
 @injectable()
 export default class PlayableClassResolver {
+  @inject(MediaMapper)
+  private mediaMapper: MediaMapper;
+
   getDefinition() {
     return {
       Query: {
-        classes: async (
-          root: any,
-          { id }: { id: string },
-          { dataSources }: { dataSources: IDataSources }
-        ) => {
-          return await dataSources.classes.getAllClasses();
-        },
-        class: async (
-          root: any,
-          { id }: { id: string },
-          { dataSources }: { dataSources: IDataSources }
-        ) => {
-          return await dataSources.classes.getClassById(id);
-        }
+        classes: this.getClasses.bind(this),
+        class: this.getClass.bind(this)
       },
       PlayableClass: {
-        genderName: (playableClass: any) => playableClass.gender_name,
-        powerType: async (
-          playableClass: any,
-          args: any,
-          { dataSources }: { dataSources: IDataSources }
-        ) => {
-          return await dataSources.powerTypes.getPowerTypeById(
-            playableClass.power_type.id
-          );
-        },
-        media: async (
-          playableClass: any,
-          args: any,
-          { dataSources }: { dataSources: IDataSources }
-        ) => {
-          const media: IMediaDocument = await dataSources.document.getDocumentFromDocumentLink(
-            playableClass.media
-          );
-          return media.assets.reduce(
-            (assetMap: IMediaMap, asset: IKeyValuePair) => {
-              assetMap[asset.key] = {
-                url: asset.value
-              };
-              return assetMap;
-            },
-            {}
-          );
-        }
+        genderName: this.getGenderedName.bind(this),
+        powerType: this.getPowerType.bind(this),
+        media: this.getMedia.bind(this)
       }
     };
+  }
+
+  private async getClasses(
+    root: any,
+    { id }: { id: string },
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    return await dataSources.classes.getAllClasses();
+  }
+
+  private async getClass(
+    root: any,
+    { id }: { id: string },
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    return await dataSources.classes.getClassById(id);
+  }
+
+  private async getPowerType(
+    playableClass: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    return await dataSources.powerTypes.getPowerTypeById(
+      playableClass.power_type.id
+    );
+  }
+
+  private async getMedia(
+    playableClass: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    const media: IMediaDocument = await dataSources.document.getDocumentFromDocumentLink(
+      playableClass.media
+    );
+    return this.mediaMapper.reduceMediaArray(media);
+  }
+
+  private getGenderedName(playableClass: any) {
+    return playableClass.gender_name;
   }
 }

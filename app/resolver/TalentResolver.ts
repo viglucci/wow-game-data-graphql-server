@@ -1,4 +1,4 @@
-import { inject, injectable } from "../ioc/ioc";
+import { inject, injectable } from "inversify";
 import TalentMapper from "../mapper/TalentMapper";
 
 @injectable()

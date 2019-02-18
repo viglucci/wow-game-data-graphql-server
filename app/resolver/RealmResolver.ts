@@ -1,5 +1,5 @@
+import { inject, injectable } from "inversify";
 import IDataSources from "../interfaces/IDataSources";
-import { inject, injectable } from "../ioc/ioc";
 import RealmMapper from "../mapper/RealmMapper";
 
 @injectable()

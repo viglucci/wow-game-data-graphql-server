@@ -1,5 +1,5 @@
+import { injectable } from "inversify";
 import IDataSources from "../interfaces/IDataSources";
-import { injectable } from "../ioc/ioc";
 
 @injectable()
 export default class WoWTokenResolver {
