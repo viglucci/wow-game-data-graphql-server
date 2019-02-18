@@ -16,7 +16,7 @@ export default class PowerTypesDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getPowerTypeById(id: string): Promise<any> {
+  public async powerTypeById(id: string): Promise<any> {
     return await this.getResource(`/power-type/${id}`, {
       namespace: "static-us"
     });

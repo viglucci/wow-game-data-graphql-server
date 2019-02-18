@@ -11,8 +11,8 @@ export default class PlayableClassResolver {
   getDefinition() {
     return {
       Query: {
-        classes: this.getClasses.bind(this),
-        class: this.getClass.bind(this)
+        classes: this.classes.bind(this),
+        cassById: this.getClass.bind(this)
       },
       PlayableClass: {
         genderName: this.getGenderedName.bind(this),
@@ -22,7 +22,7 @@ export default class PlayableClassResolver {
     };
   }
 
-  private async getClasses(
+  private async classes(
     root: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
@@ -35,7 +35,7 @@ export default class PlayableClassResolver {
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.classes.getClassById(id);
+    return await dataSources.classes.cassById(id);
   }
 
   private async getPowerType(
@@ -43,7 +43,7 @@ export default class PlayableClassResolver {
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.powerTypes.getPowerTypeById(
+    return await dataSources.powerTypes.powerTypeById(
       playableClass.power_type.id
     );
   }

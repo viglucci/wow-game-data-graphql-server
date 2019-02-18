@@ -23,7 +23,7 @@ export default class RealmsDataSource extends GameDataAPIDataSource {
     });
   }
 
-  public async getConnectedRealmById(id: string): Promise<any> {
+  public async connectedRealmById(id: string): Promise<any> {
     return await this.getResource(`/connected-realm/${id}`, {
       namespace: "dynamic-us"
     });
@@ -41,7 +41,7 @@ export default class RealmsDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getRealmById(id: string): Promise<any> {
+  public async realmById(id: string): Promise<any> {
     return await this.getResource(`/realm/${id}`, {
       namespace: "dynamic-us"
     });

@@ -6,7 +6,7 @@ export default class WoWTokenResolver {
   getDefinition() {
     return {
       Query: {
-        token: this.getWoWToken.bind(this)
+        wowToken: this.getWowToken.bind(this)
       },
       WoWToken: {
         lastUpdatedTimestamp: this.getLastUpdatedTimestamp.bind(this)
@@ -14,12 +14,12 @@ export default class WoWTokenResolver {
     };
   }
 
-  private async getWoWToken(
+  private async getWowToken(
     root: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.token.getWoWToken();
+    return await dataSources.token.wowToken();
   }
 
   private async getLastUpdatedTimestamp(token: any, args: any, ctx: any) {

@@ -4,7 +4,7 @@ import INamedDocumentLink from "../interfaces/INamedDocumentLink";
 
 @injectable()
 export default class MythicKeystoneDataSource extends GameDataAPIDataSource {
-  public async getMythicKeystoneSeasons(): Promise<any> {
+  public async mythicKeystoneSeasons(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/season/index`, {
       namespace: "dynamic-us"
     });
@@ -16,13 +16,13 @@ export default class MythicKeystoneDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getMythicKeystoneSeasonById(id: string): Promise<any> {
+  public async mythicKeystoneSeasonById(id: string): Promise<any> {
     return await this.getResource(`/mythic-keystone/season/${id}`, {
       namespace: "dynamic-us"
     });
   }
 
-  public async getCurrentMythicKeystoneSeason(): Promise<any> {
+  public async currentMythicKeystoneSeason(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/period/index`, {
       namespace: "dynamic-us"
     });
@@ -38,7 +38,7 @@ export default class MythicKeystoneDataSource extends GameDataAPIDataSource {
     return Promise.all(individualFetches);
   }
 
-  public async getMythicKeystonePeriods(): Promise<any> {
+  public async mythicKeystonePeriods(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/period/index`, {
       namespace: "dynamic-us"
     });
@@ -50,13 +50,13 @@ export default class MythicKeystoneDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getMythicKeystonePeriodById(id: string): Promise<any> {
+  public async mythicKeystonePeriodById(id: string): Promise<any> {
     return await this.getResource(`/mythic-keystone/period/${id}`, {
       namespace: "dynamic-us"
     });
   }
 
-  public async getCurrentMythicKeystonePeriod(): Promise<any> {
+  public async currentMythicKeystonePeriod(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/period/index`, {
       namespace: "dynamic-us"
     });

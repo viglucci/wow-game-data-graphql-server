@@ -10,8 +10,8 @@ export default class RealmResolver {
   getDefinition() {
     return {
       Query: {
-        realms: this.resolveAllRealms.bind(this),
-        realm: this.resolveRealm.bind(this)
+        realms: this.getAllRealms.bind(this),
+        realmById: this.getRealmById.bind(this)
       },
       Realm: {
         isTournamentRealm: (realm: any) => {
@@ -30,7 +30,7 @@ export default class RealmResolver {
     };
   }
 
-  protected async resolveAllRealms(
+  protected async getAllRealms(
     realm: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
@@ -38,11 +38,11 @@ export default class RealmResolver {
     return await dataSources.realms.getAllRealms();
   }
 
-  protected async resolveRealm(
+  protected async getRealmById(
     realm: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.realms.getRealmById(id);
+    return await dataSources.realms.realmById(id);
   }
 }

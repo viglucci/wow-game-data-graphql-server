@@ -3,7 +3,7 @@ import GameDataAPIDataSource from "./GameDataAPIDataSource";
 
 @injectable()
 export default class WoWTokenDataSource extends GameDataAPIDataSource {
-  public async getWoWToken(): Promise<any> {
+  public async wowToken(): Promise<any> {
     return await this.getResource(`/token/index`, {
       namespace: "dynamic-us"
     });

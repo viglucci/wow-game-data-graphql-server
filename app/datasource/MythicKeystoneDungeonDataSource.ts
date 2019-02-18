@@ -4,7 +4,7 @@ import INamedDocumentLink from "../interfaces/INamedDocumentLink";
 
 @injectable()
 export default class MythicKeystoneDungeonDataSource extends GameDataAPIDataSource {
-  public async getMythicKeystoneDungeons(): Promise<any> {
+  public async mythicKeystoneDungeons(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/dungeon/index`, {
       namespace: "dynamic-us"
     });
@@ -16,7 +16,7 @@ export default class MythicKeystoneDungeonDataSource extends GameDataAPIDataSour
     return await Promise.all(individualFetches);
   }
 
-  public async getMythicKeystoneDungeonById(id: string): Promise<any> {
+  public async mythicKeystoneDungeonById(id: string): Promise<any> {
     return await this.getResource(`/mythic-keystone/dungeon/${id}`, {
       namespace: "dynamic-us"
     });

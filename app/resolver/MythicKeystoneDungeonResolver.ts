@@ -6,8 +6,8 @@ export default class MythicKeystoneDungeonResolver {
   getDefinition() {
     return {
       Query: {
-        mythicKeystoneDungeon: this.getMythicKeystoneDungeon.bind(this),
-        mythicKeystoneDungeons: this.getMythicKeystoneDungeons.bind(this)
+        mythicKeystoneDungeons: this.getMythicKeystoneDungeons.bind(this),
+        mythicKeystoneDungeonById: this.getMythicKeystoneDungeon.bind(this)
       }
     };
   }
@@ -17,7 +17,7 @@ export default class MythicKeystoneDungeonResolver {
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystoneDungeon.getMythicKeystoneDungeons();
+    return dataSources.mythicKeystoneDungeon.mythicKeystoneDungeons();
   }
 
   private getMythicKeystoneDungeon(
@@ -25,6 +25,6 @@ export default class MythicKeystoneDungeonResolver {
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystoneDungeon.getMythicKeystoneDungeonById(id);
+    return dataSources.mythicKeystoneDungeon.mythicKeystoneDungeonById(id);
   }
 }

@@ -12,12 +12,12 @@ export default class PlayableRaceResolver {
         ) => {
           return await dataSources.races.getAllRaces();
         },
-        race: async (
+        raceById: async (
           race: any,
           { id }: { id: string },
           { dataSources }: { dataSources: IDataSources }
         ) => {
-          return await dataSources.races.getRaceById(id);
+          return await dataSources.races.raceById(id);
         }
       },
       PlayableRace: {

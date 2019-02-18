@@ -16,7 +16,7 @@ export default class ClassesDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getClassById(id: string): Promise<any> {
+  public async cassById(id: string): Promise<any> {
     return await this.getResource(`/playable-class/${id}`, {
       namespace: "static-us"
     });

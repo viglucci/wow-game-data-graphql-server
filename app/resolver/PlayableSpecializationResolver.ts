@@ -13,12 +13,12 @@ export default class PlayableSpecializationResolver {
         ) => {
           return await dataSources.specializations.getAllSpecializations();
         },
-        specialization: async (
+        specializationById: async (
           race: any,
           { id }: { id: string },
           { dataSources }: { dataSources: IDataSources }
         ) => {
-          return await dataSources.specializations.getSpecializationById(id);
+          return await dataSources.specializations.specializationById(id);
         }
       },
       PlayableSpecialization: {
@@ -28,7 +28,7 @@ export default class PlayableSpecializationResolver {
           args: any,
           { dataSources }: { dataSources: IDataSources }
         ) => {
-          return await dataSources.classes.getClassById(
+          return await dataSources.classes.cassById(
             specialization.playable_class.id
           );
         },

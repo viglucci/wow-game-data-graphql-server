@@ -13,12 +13,12 @@ export default class PowerTypeResolver {
         ) => {
           return await dataSources.powerTypes.getAllPowerTypes();
         },
-        powerType: async (
+        powerTypeById: async (
           root: any,
           { id }: { id: string },
           { dataSources }: { dataSources: IDataSources }
         ) => {
-          return await dataSources.powerTypes.getPowerTypeById(id);
+          return await dataSources.powerTypes.powerTypeById(id);
         }
       }
     };

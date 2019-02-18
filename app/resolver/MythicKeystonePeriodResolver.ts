@@ -7,7 +7,7 @@ export default class MythicKeystonePeriodResolver {
     return {
       Query: {
         mythicKeystonePeriods: this.getMythicKeystonePeriods.bind(this),
-        mythicKeystonePeriod: this.getMythicKeystonePeriod.bind(this),
+        mythicKeystonePeriodById: this.getMythicKeystonePeriod.bind(this),
         currentMythicKeystonePeriod: this.getCurrentMythicKeystonePeriod.bind(
           this
         )
@@ -24,7 +24,7 @@ export default class MythicKeystonePeriodResolver {
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getMythicKeystonePeriods();
+    return dataSources.mythicKeystone.mythicKeystonePeriods();
   }
 
   private getMythicKeystonePeriod(
@@ -32,7 +32,7 @@ export default class MythicKeystonePeriodResolver {
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getMythicKeystonePeriodById(id);
+    return dataSources.mythicKeystone.mythicKeystonePeriodById(id);
   }
 
   private getCurrentMythicKeystonePeriod(
@@ -40,7 +40,7 @@ export default class MythicKeystonePeriodResolver {
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getCurrentMythicKeystonePeriod();
+    return dataSources.mythicKeystone.currentMythicKeystonePeriod();
   }
 
   private getStartTimestamp(root: any) {

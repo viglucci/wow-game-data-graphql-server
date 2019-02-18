@@ -10,8 +10,8 @@ export default class ConnectedRealmResolver {
   getDefinition() {
     return {
       Query: {
-        connectedRealms: this.resolveConnectedRealms.bind(this),
-        connectedRealm: this.resolveConnectedRealm.bind(this)
+        connectedRealms: this.getConnectedRealms.bind(this),
+        connectedRealmById: this.getConnectedRealm.bind(this)
       },
       ConnectedRealm: {
         hasQueue: (connectedRealm: any) => {
@@ -24,7 +24,7 @@ export default class ConnectedRealmResolver {
     };
   }
 
-  protected async resolveConnectedRealms(
+  protected async getConnectedRealms(
     connectedRealm: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
@@ -32,11 +32,11 @@ export default class ConnectedRealmResolver {
     return await dataSources.realms.getAllConnectedRealms();
   }
 
-  protected async resolveConnectedRealm(
+  protected async getConnectedRealm(
     connectedRealm: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.realms.getConnectedRealmById(id);
+    return await dataSources.realms.connectedRealmById(id);
   }
 }

@@ -16,7 +16,7 @@ export default class SpecializationsDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async getSpecializationById(id: string): Promise<any> {
+  public async specializationById(id: string): Promise<any> {
     return await this.getResource(`/playable-specialization/${id}`, {
       namespace: "static-us"
     });

@@ -6,26 +6,24 @@ export default class MythicKeystoneSeasonResolver {
   getDefinition() {
     return {
       Query: {
-        mythicKeystoneSeasons: this.getMythicKeystoneSeasons.bind(this),
-        mythicKeystoneSeason: this.getMythicKeystoneSeason.bind(this),
-        currentMythicKeystoneSeason: this.getCurrentMythicKeystoneSeason.bind(
-          this
-        )
+        mythicKeystoneSeasons: this.mythicKeystoneSeasons.bind(this),
+        mythicKeystoneSeasonById: this.getMythicKeystoneSeason.bind(this),
+        currentMythicKeystoneSeason: this.currentMythicKeystoneSeason.bind(this)
       },
       MythicKeystoneSeason: {
         startTimestamp: this.getStartTimestamp.bind(this),
         endTimestamp: this.getEndTimestamp.bind(this),
-        periods: this.getMythicKeystonePeriodsForSeason.bind(this)
+        periods: this.mythicKeystonePeriodsForSeason.bind(this)
       }
     };
   }
 
-  private getMythicKeystoneSeasons(
+  private mythicKeystoneSeasons(
     season: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getMythicKeystoneSeasons();
+    return dataSources.mythicKeystone.mythicKeystoneSeasons();
   }
 
   private getMythicKeystoneSeason(
@@ -33,18 +31,18 @@ export default class MythicKeystoneSeasonResolver {
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getMythicKeystoneSeasonById(id);
+    return dataSources.mythicKeystone.mythicKeystoneSeasonById(id);
   }
 
-  private getCurrentMythicKeystoneSeason(
+  private currentMythicKeystoneSeason(
     season: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.getCurrentMythicKeystoneSeason();
+    return dataSources.mythicKeystone.currentMythicKeystoneSeason();
   }
 
-  private getMythicKeystonePeriodsForSeason(
+  private mythicKeystonePeriodsForSeason(
     season: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
