@@ -2,7 +2,6 @@ import extend from "extend";
 import { inject, injectable } from "../ioc/ioc";
 import ConnectedRealmResolver from "./ConnectedRealmResolver";
 import LocalizedGenderedStringResolver from "./LocalizedGenderedStringResolver";
-import MythicKeystoneResolver from "./MythicKeystoneResolver";
 import MythicRaidLeaderboardResolver from "./MythicRaidLeaderboardResolver";
 import PlayableClassResolver from "./PlayableClassResolver";
 import PlayableRaceResolver from "./PlayableRaceResolver";
@@ -11,6 +10,8 @@ import PowerTypeResolver from "./PowerTypeResolver";
 import RealmResolver from "./RealmResolver";
 import TalentResolver from "./TalentResolver";
 import WoWTokenResolver from "./WoWTokenResolver";
+import MythicKeystonePeriodResolver from "./MythicKeystonePeriodResolver";
+import MythicKeystoneSeasonResolver from "./MythicKeystoneSeasonResolver";
 
 @injectable()
 export default class ResolverMapFactory {
@@ -44,8 +45,11 @@ export default class ResolverMapFactory {
   @inject(MythicRaidLeaderboardResolver)
   private mythicRaidLeaderboardResolver: MythicRaidLeaderboardResolver;
 
-  @inject(MythicKeystoneResolver)
-  private mythicKeystoneResolver: MythicKeystoneResolver;
+  @inject(MythicKeystonePeriodResolver)
+  private mythicKeystonePeriodResolver: MythicKeystonePeriodResolver;
+
+  @inject(MythicKeystoneSeasonResolver)
+  private mythicKeystoneSeasonResolver: MythicKeystoneSeasonResolver;
 
   public makeMap(): any {
     const map = extend(
@@ -61,7 +65,8 @@ export default class ResolverMapFactory {
       this.talentResolver.getDefinition(),
       this.tokenResolver.getDefinition(),
       this.mythicRaidLeaderboardResolver.getDefinition(),
-      this.mythicKeystoneResolver.getDefinition()
+      this.mythicKeystonePeriodResolver.getDefinition(),
+      this.mythicKeystoneSeasonResolver.getDefinition()
     );
 
     return map;

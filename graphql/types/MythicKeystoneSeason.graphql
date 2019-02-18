@@ -1,0 +1,8 @@
+# import MythicKeystonePeriod from 'MythicKeystonePeriod.graphql'
+
+type MythicKeystoneSeason {
+  id: ID!
+  startTimestamp: Int
+  endTimestamp: Int
+  periods: [MythicKeystonePeriod]
+}

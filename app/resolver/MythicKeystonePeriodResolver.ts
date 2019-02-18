@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import IDataSources from "../interfaces/IDataSources";
 
 @injectable()
-export default class MythicKeystoneResolver {
+export default class MythicKeystonePeriodResolver {
   getDefinition() {
     return {
       Query: {
@@ -20,7 +20,7 @@ export default class MythicKeystoneResolver {
   }
 
   private getMythicKeystonePeriods(
-    connectedRealm: any,
+    period: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
@@ -28,24 +28,26 @@ export default class MythicKeystoneResolver {
   }
 
   private getMythicKeystonePeriod(
-    connectedRealm: any,
+    period: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
-  ) {}
+  ) {
+    return dataSources.mythicKeystone.getMythicKeystonePeriodById(id);
+  }
 
   private getCurrentMythicKeystonePeriod(
-    connectedRealm: any,
+    period: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
     return dataSources.mythicKeystone.getCurrentMythicKeystonePeriod();
   }
 
-  private getStartTimestamp(period: any) {
-    return period.start_timestamp / 1000;
+  private getStartTimestamp(root: any) {
+    return root.start_timestamp / 1000;
   }
 
-  private getEndTimestamp(period: any) {
-    return period.end_timestamp / 1000;
+  private getEndTimestamp(root: any) {
+    return root.end_timestamp / 1000;
   }
 }

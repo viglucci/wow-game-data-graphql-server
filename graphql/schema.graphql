@@ -1,6 +1,7 @@
 # import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
-# import mythicKeystonePeriod from 'types/mythicKeystonePeriod.graphql'
+# import MythicKeystonePeriod from 'types/MythicKeystonePeriod.graphql'
+# import MythicKeystoneSeason from 'types/MythicKeystoneSeason.graphql'
 # import MythicRaidLeaderboard from 'types/MythicRaidLeaderboard.graphql'
 # import PlayableRace from 'types/PlayableRace.graphql'
 # import PlayableClass from 'types/PlayableClass.graphql'
@@ -27,6 +28,9 @@ type Query {
     raidSlug: String
     factionSlug: String
   ): MythicRaidLeaderboard
+  mythicKeystoneSeason(id: ID!): MythicKeystoneSeason
+  mythicKeystoneSeasons: [MythicKeystoneSeason]
+  currentMythicKeystoneSeason: MythicKeystoneSeason
   mythicKeystonePeriod(id: ID!): MythicKeystonePeriod
   mythicKeystonePeriods: [MythicKeystonePeriod]
   currentMythicKeystonePeriod: MythicKeystonePeriod
