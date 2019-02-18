@@ -7,18 +7,19 @@ import { InversifyExpressServer } from "inversify-express-utils";
 import * as path from "path";
 import * as swagger from "swagger-express-ts";
 import ClassesDataSource from "./datasource/ClassesDataSource";
+import DocumentDataSource from "./datasource/DocumentDataSource";
+import MythicKeystoneDataSource from "./datasource/MythicKeystoneDataSource";
+import MythicRaidLeaderboardDataSource from "./datasource/MythicRaidLeaderboardDataSource";
 import PowerTypesDataSource from "./datasource/PowerTypesDataSource";
 import RacesDataSource from "./datasource/RacesDataSource";
 import RealmsDataSource from "./datasource/RealmsDataSource";
 import SpecializationsDataSource from "./datasource/SpecializationsDataSource";
+import WoWTokenDataSource from "./datasource/WoWTokenDataSource";
 import IDataSources from "./interfaces/IDataSources";
 import { container } from "./ioc/ioc";
 import "./ioc/loader";
-import ResolverMapFactory from "./resolver/ResolverMapFactory";
-import DocumentDataSource from "./datasource/DocumentDataSource";
 import Logger from "./logging/Logger";
-import WoWTokenDataSource from "./datasource/WoWTokenDataSource";
-import MythicRaidLeaderboardDataSource from "./datasource/MythicRaidLeaderboardDataSource";
+import ResolverMapFactory from "./resolver/ResolverMapFactory";
 
 let server = new InversifyExpressServer(container);
 
@@ -75,7 +76,8 @@ server.setConfig(app => {
       specializations: container.get(SpecializationsDataSource),
       powerTypes: container.get(PowerTypesDataSource),
       token: container.get(WoWTokenDataSource),
-      mythicRaidLeaderboards: container.get(MythicRaidLeaderboardDataSource)
+      mythicRaidLeaderboards: container.get(MythicRaidLeaderboardDataSource),
+      mythicKeystone: container.get(MythicKeystoneDataSource)
     };
     return dataSources;
   };

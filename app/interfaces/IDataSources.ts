@@ -9,6 +9,7 @@ import RacesDataSource from "../datasource/RacesDataSource";
 import RealmsDataSource from "../datasource/RealmsDataSource";
 import SpecializationsDataSource from "../datasource/SpecializationsDataSource";
 import WoWTokenDataSource from "../datasource/WoWTokenDataSource";
+import MythicKeystoneDataSource from "../datasource/MythicKeystoneDataSource";
 
 export default interface IDataSources extends DataSources<DataSource> {
   document: DocumentDataSource;
@@ -19,4 +20,5 @@ export default interface IDataSources extends DataSources<DataSource> {
   specializations: SpecializationsDataSource;
   token: WoWTokenDataSource;
   mythicRaidLeaderboards: MythicRaidLeaderboardDataSource;
+  mythicKeystone: MythicKeystoneDataSource;
 }

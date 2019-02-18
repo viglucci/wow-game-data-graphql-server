@@ -1,0 +1,5 @@
+type MythicKeystonePeriod {
+  id: ID!
+  startTimestamp: Int
+  endTimestamp: Int
+}
