@@ -10,7 +10,7 @@ export default class MythicRaidLeaderboardDataSource extends GameDataAPIDataSour
     return await this.getResource(
       `/leaderboard/hall-of-fame/${raidSlug}/${factionSlug}`,
       {
-        namespace: "dynamic-us"
+        namespace: "DYNAMIC"
       }
     );
   }

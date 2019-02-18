@@ -7,7 +7,7 @@ import IDocumentLink from "../../interfaces/IDocumentLink";
 export default class RealmsDataSource extends GameDataAPIDataSource {
   public async getAllConnectedRealms(): Promise<any> {
     const index = await this.getResource("/connected-realm/index", {
-      namespace: "dynamic-us"
+      namespace: "DYNAMIC"
     });
     const individualFetches = index.connected_realms.map(
       async (documentLink: IDocumentLink) => {
@@ -19,19 +19,19 @@ export default class RealmsDataSource extends GameDataAPIDataSource {
 
   public async getConnectedRealmByKey(key: IDocumentLink): Promise<any> {
     return await this.getResource(key.href, {
-      namespace: "dynamic-us"
+      namespace: "DYNAMIC"
     });
   }
 
   public async connectedRealmById(id: string): Promise<any> {
     return await this.getResource(`/connected-realm/${id}`, {
-      namespace: "dynamic-us"
+      namespace: "DYNAMIC"
     });
   }
 
   public async getAllRealms(): Promise<any> {
     const index = await this.getResource("/realm/index", {
-      namespace: "dynamic-us"
+      namespace: "DYNAMIC"
     });
     const individualFetches = index.realms.map(
       async (documentLink: INamedDocumentLink) => {
@@ -41,9 +41,12 @@ export default class RealmsDataSource extends GameDataAPIDataSource {
     return await Promise.all(individualFetches);
   }
 
-  public async realmById(id: string): Promise<any> {
-    return await this.getResource(`/realm/${id}`, {
-      namespace: "dynamic-us"
-    });
+  public async getRealmBySlug(slug: string, params?: any): Promise<any> {
+    return await this.getResource(
+      `/realm/${slug}`,
+      this.combineParams(params, {
+        namespace: "DYNAMIC"
+      })
+    );
   }
 }

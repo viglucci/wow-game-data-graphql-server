@@ -6,7 +6,7 @@ import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
 export default class PowerTypesDataSource extends GameDataAPIDataSource {
   public async getAllPowerTypes(): Promise<any> {
     const index = await this.getResource("/power-type/index", {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
     const individualFetches = index.power_types.map(
       async (documentLink: INamedDocumentLink) => {
@@ -18,7 +18,7 @@ export default class PowerTypesDataSource extends GameDataAPIDataSource {
 
   public async powerTypeById(id: string): Promise<any> {
     return await this.getResource(`/power-type/${id}`, {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
   }
 }

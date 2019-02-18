@@ -26,5 +26,34 @@ module.exports = {
   },
   logging: {
     level: "debug"
+  },
+  datasources: {
+    gdapi: {
+      defaultRegion: "us",
+      hosts: {
+        us: "https://us.api.blizzard.com/",
+        eu: "https://eu.api.blizzard.com/",
+        kr: "https://kr.api.blizzard.com/",
+        tw: "https://tw.api.blizzard.com/",
+        cn: "https://gateway.battlenet.com.cn/",
+        default: "https://us.api.blizzard.com/"
+      },
+      namespaces: {
+        dynamic: {
+          us: "dynamic-us",
+          eu: "dynamic-eu",
+          kr: "dynamic-kr",
+          tw: "dynamic-tw",
+          cn: "dynamic-cn"
+        },
+        static: {
+          us: "static-us",
+          eu: "static-eu",
+          kr: "static-kr",
+          tw: "static-tw",
+          cn: "static-cn"
+        }
+      }
+    }
   }
 };

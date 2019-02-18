@@ -1,6 +1,7 @@
 import { inject, injectable } from "inversify";
 import IDataSources from "../../interfaces/IDataSources";
 import IMediaDocument from "../../interfaces/IMediaDocument";
+import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
 import MediaMapper from "../mapper/MediaMapper";
 
 @injectable()
@@ -12,12 +13,13 @@ export default class PlayableClassResolver {
     return {
       Query: {
         classes: this.classes.bind(this),
-        cassById: this.getClass.bind(this)
+        classById: this.getClassById.bind(this)
       },
       PlayableClass: {
         genderName: this.getGenderedName.bind(this),
         powerType: this.getPowerType.bind(this),
-        media: this.getMedia.bind(this)
+        media: this.getMediaForClass.bind(this),
+        specializations: this.getSpecializationsForClass.bind(this)
       }
     };
   }
@@ -30,7 +32,7 @@ export default class PlayableClassResolver {
     return await dataSources.classes.getAllClasses();
   }
 
-  private async getClass(
+  private async getClassById(
     root: any,
     { id }: { id: string },
     { dataSources }: { dataSources: IDataSources }
@@ -48,7 +50,7 @@ export default class PlayableClassResolver {
     );
   }
 
-  private async getMedia(
+  private async getMediaForClass(
     playableClass: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
@@ -61,5 +63,19 @@ export default class PlayableClassResolver {
 
   private getGenderedName(playableClass: any) {
     return playableClass.gender_name;
+  }
+
+  private async getSpecializationsForClass(
+    playableClass: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    return playableClass.specializations.map(
+      async (specializationLink: INamedDocumentLink) => {
+        return dataSources.document.getDocumentFromDocumentLink(
+          specializationLink
+        );
+      }
+    );
   }
 }

@@ -18,11 +18,11 @@ type Query {
 
   # classes
   classes: [PlayableClass]
-  cassById(id: ID!): PlayableClass
+  classById(id: ID!): PlayableClass
 
   # realms
   realms: [Realm]
-  realmById(id: ID!): Realm
+  realmBySlug(slug: ID!): Realm
 
   # connected realms
   connectedRealmById(id: ID!): ConnectedRealm
@@ -57,5 +57,5 @@ type Query {
   mythicKeystoneDungeonById(id: ID!): MythicKeystoneDungeon
 
   # wow token
-  wowToken: WoWToken
+  wowToken(region: String): WoWToken
 }

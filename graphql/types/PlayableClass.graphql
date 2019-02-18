@@ -2,6 +2,7 @@
 # import Faction from 'Faction.graphql'
 # import Media from 'Media.graphql'
 # import PowerType from 'PowerType.graphql'
+# import PlayableSpecialization from 'PlayableSpecialization.graphql'
 # import intl from '../directives/intl.graphql'
 
 type PlayableClass {
@@ -10,4 +11,5 @@ type PlayableClass {
   genderName: LocalizedGenderedString
   powerType: PowerType
   media: Media
+  specializations: [PlayableSpecialization]
 }

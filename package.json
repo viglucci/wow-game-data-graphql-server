@@ -22,6 +22,7 @@
   "homepage": "https://github.com/viglucci/wow-game-data-graphql-server#readme",
   "dependencies": {
     "@types/bunyan": "^1.8.5",
+    "@types/response-time": "^2.3.3",
     "@types/starwars-names": "^1.6.0",
     "apollo-datasource-rest": "^0.3.1",
     "apollo-server": "^2.4.2",
@@ -48,7 +49,9 @@
     "pg": "7.4.1",
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.12",
+    "response-time": "^2.3.2",
     "simple-oauth2": "^2.2.1",
+    "source-map-support": "^0.5.10",
     "starwars-names": "^1.6.0",
     "swagger-express-ts": "^1.0.1",
     "swagger-ui-dist": "^3.20.8"

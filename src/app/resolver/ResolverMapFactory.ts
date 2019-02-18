@@ -12,6 +12,8 @@ import PowerTypeResolver from "./PowerTypeResolver";
 import RealmResolver from "./RealmResolver";
 import TalentResolver from "./TalentResolver";
 import WoWTokenResolver from "./WoWTokenResolver";
+import GuildResolver from "./GuildResolver";
+import MythicRaidLeaderboardEntryResolver from "./MythicRaidLeaderboardEntryResolver";
 @injectable()
 export default class ResolverMapFactory {
   @inject(PlayableRaceResolver)
@@ -41,6 +43,9 @@ export default class ResolverMapFactory {
   @inject(MythicRaidLeaderboardResolver)
   private mythicRaidLeaderboardResolver: MythicRaidLeaderboardResolver;
 
+  @inject(MythicRaidLeaderboardEntryResolver)
+  private mythicRaidLeaderboardEntryResolver: MythicRaidLeaderboardEntryResolver;
+
   @inject(MythicKeystonePeriodResolver)
   private mythicKeystonePeriodResolver: MythicKeystonePeriodResolver;
 
@@ -49,6 +54,9 @@ export default class ResolverMapFactory {
 
   @inject(MythicKeystoneDungeonResolver)
   private mythicKeystoneDungeonResolver: MythicKeystoneDungeonResolver;
+
+  @inject(GuildResolver)
+  private guildResolver: GuildResolver;
 
   public makeMap(): any {
     const map = extend(
@@ -63,9 +71,11 @@ export default class ResolverMapFactory {
       this.talentResolver.getDefinition(),
       this.tokenResolver.getDefinition(),
       this.mythicRaidLeaderboardResolver.getDefinition(),
+      this.mythicRaidLeaderboardEntryResolver.getDefinition(),
       this.mythicKeystonePeriodResolver.getDefinition(),
       this.mythicKeystoneSeasonResolver.getDefinition(),
-      this.mythicKeystoneDungeonResolver.getDefinition()
+      this.mythicKeystoneDungeonResolver.getDefinition(),
+      this.guildResolver.getDefinition()
     );
 
     return map;

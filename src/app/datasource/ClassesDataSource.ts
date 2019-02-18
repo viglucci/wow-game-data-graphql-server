@@ -6,7 +6,7 @@ import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
 export default class ClassesDataSource extends GameDataAPIDataSource {
   public async getAllClasses(): Promise<any> {
     const index = await this.getResource("/playable-class/index", {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
     const individualFetches = index.classes.map(
       async (documentLink: INamedDocumentLink) => {
@@ -18,13 +18,13 @@ export default class ClassesDataSource extends GameDataAPIDataSource {
 
   public async cassById(id: string): Promise<any> {
     return await this.getResource(`/playable-class/${id}`, {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
   }
 
   public async getMediaDocumentById(id: string): Promise<any> {
     return await this.getResource(`/wow/media/playable-class/${id}`, {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
   }
 }

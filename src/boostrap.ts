@@ -23,7 +23,7 @@ import "./app/ioc/loader";
 import Logger from "./app/logging/Logger";
 import ResolverMapFactory from "./app/resolver/ResolverMapFactory";
 import IDataSources from "./interfaces/IDataSources";
-import { Request } from "express";
+import responseTime from "response-time";
 
 let server = new InversifyExpressServer(container);
 
@@ -38,6 +38,8 @@ server.setConfig(app => {
   const swaggerUiAssetsPath = path.resolve(
     `${__dirname}/../node_modules/swagger-ui-dist`
   );
+
+  app.use(responseTime());
 
   app.use("/api-docs/swagger", express.static(swaggerUiPath));
   app.use("/api-docs/swagger/assets", express.static(swaggerUiAssetsPath));

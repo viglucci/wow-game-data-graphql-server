@@ -6,7 +6,7 @@ import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
 export default class SpecializationsDataSource extends GameDataAPIDataSource {
   public async getAllSpecializations(): Promise<any> {
     const index = await this.getResource("/playable-specialization/index", {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
     const individualFetches = index.character_specializations.map(
       async (documentLink: INamedDocumentLink) => {
@@ -18,7 +18,7 @@ export default class SpecializationsDataSource extends GameDataAPIDataSource {
 
   public async specializationById(id: string): Promise<any> {
     return await this.getResource(`/playable-specialization/${id}`, {
-      namespace: "static-us"
+      namespace: "STATIC"
     });
   }
 }

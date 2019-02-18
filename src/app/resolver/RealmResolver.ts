@@ -11,7 +11,7 @@ export default class RealmResolver {
     return {
       Query: {
         realms: this.getAllRealms.bind(this),
-        realmById: this.getRealmById.bind(this)
+        realmBySlug: this.getRealmBySlug.bind(this)
       },
       Realm: {
         isTournamentRealm: (realm: any) => {
@@ -38,11 +38,11 @@ export default class RealmResolver {
     return await dataSources.realms.getAllRealms();
   }
 
-  protected async getRealmById(
+  protected async getRealmBySlug(
     realm: any,
-    { id }: { id: string },
+    { slug }: { slug: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.realms.realmById(id);
+    return await dataSources.realms.getRealmBySlug(slug);
   }
 }

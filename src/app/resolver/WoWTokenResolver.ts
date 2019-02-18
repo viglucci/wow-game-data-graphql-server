@@ -16,10 +16,10 @@ export default class WoWTokenResolver {
 
   private async getWowToken(
     root: any,
-    args: any,
+    { region }: { region: string },
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.token.wowToken();
+    return await dataSources.token.wowToken(region);
   }
 
   private async getLastUpdatedTimestamp(token: any, args: any, ctx: any) {

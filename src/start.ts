@@ -1,5 +1,8 @@
 import "reflect-metadata"; // must come first!
 
+declare function require(name: string): any;
+require("source-map-support").install();
+
 // initialize env from .env file
 import * as dotenv from "dotenv";
 dotenv.config();
