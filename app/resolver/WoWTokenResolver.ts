@@ -9,7 +9,7 @@ export default class WoWTokenResolver {
         token: this.getWoWToken.bind(this)
       },
       WoWToken: {
-        lastUpdatedTimestampMilli: this.getLastUpdatedTimeMilli.bind(this)
+        lastUpdatedTimestampSeconds: this.getLastUpdatedTimeSeconds.bind(this)
       }
     };
   }
@@ -22,7 +22,7 @@ export default class WoWTokenResolver {
     return await dataSources.token.getWoWToken();
   }
 
-  private async getLastUpdatedTimeMilli(token: any, args: any, ctx: any) {
+  private async getLastUpdatedTimeSeconds(token: any, args: any, ctx: any) {
     return token.last_updated_timestamp / 1000;
   }
 }
