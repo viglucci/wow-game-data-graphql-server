@@ -1,4 +1,3 @@
-import "reflect-metadata"; // must come first!
 import { ApolloServer, gql } from "apollo-server-express";
 import * as bodyParser from "body-parser";
 import * as express from "express";
@@ -9,6 +8,7 @@ import * as swagger from "swagger-express-ts";
 import ClassesDataSource from "./datasource/ClassesDataSource";
 import DocumentDataSource from "./datasource/DocumentDataSource";
 import MythicKeystoneDataSource from "./datasource/MythicKeystoneDataSource";
+import MythicKeystoneDungeonDataSource from "./datasource/MythicKeystoneDungeonDataSource";
 import MythicRaidLeaderboardDataSource from "./datasource/MythicRaidLeaderboardDataSource";
 import PowerTypesDataSource from "./datasource/PowerTypesDataSource";
 import RacesDataSource from "./datasource/RacesDataSource";
@@ -77,7 +77,8 @@ server.setConfig(app => {
       powerTypes: container.get(PowerTypesDataSource),
       token: container.get(WoWTokenDataSource),
       mythicRaidLeaderboards: container.get(MythicRaidLeaderboardDataSource),
-      mythicKeystone: container.get(MythicKeystoneDataSource)
+      mythicKeystone: container.get(MythicKeystoneDataSource),
+      mythicKeystoneDungeon: container.get(MythicKeystoneDungeonDataSource)
     };
     return dataSources;
   };

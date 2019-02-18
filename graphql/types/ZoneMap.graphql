@@ -1,6 +1,6 @@
 # import LocalizedString from 'LocalizedString.graphql'
 
-type Zone {
+type ZoneMap {
+  id: ID!
   name: LocalizedString
-  slug: String
 }

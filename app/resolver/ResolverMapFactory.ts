@@ -2,6 +2,7 @@ import extend from "extend";
 import { inject, injectable } from "../ioc/ioc";
 import ConnectedRealmResolver from "./ConnectedRealmResolver";
 import LocalizedGenderedStringResolver from "./LocalizedGenderedStringResolver";
+import MythicKeystoneDungeonResolver from "./MythicKeystoneDungeonResolver";
 import MythicKeystonePeriodResolver from "./MythicKeystonePeriodResolver";
 import MythicKeystoneSeasonResolver from "./MythicKeystoneSeasonResolver";
 import MythicRaidLeaderboardResolver from "./MythicRaidLeaderboardResolver";
@@ -51,6 +52,9 @@ export default class ResolverMapFactory {
   @inject(MythicKeystoneSeasonResolver)
   private mythicKeystoneSeasonResolver: MythicKeystoneSeasonResolver;
 
+  @inject(MythicKeystoneDungeonResolver)
+  private mythicKeystoneDungeonResolver: MythicKeystoneDungeonResolver;
+
   public makeMap(): any {
     const map = extend(
       true,
@@ -66,7 +70,8 @@ export default class ResolverMapFactory {
       this.tokenResolver.getDefinition(),
       this.mythicRaidLeaderboardResolver.getDefinition(),
       this.mythicKeystonePeriodResolver.getDefinition(),
-      this.mythicKeystoneSeasonResolver.getDefinition()
+      this.mythicKeystoneSeasonResolver.getDefinition(),
+      this.mythicKeystoneDungeonResolver.getDefinition()
     );
 
     return map;

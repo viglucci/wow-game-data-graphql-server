@@ -1,3 +1,5 @@
+import "reflect-metadata"; // must come first!
+
 // initialize env from .env file
 import * as dotenv from "dotenv";
 dotenv.config();

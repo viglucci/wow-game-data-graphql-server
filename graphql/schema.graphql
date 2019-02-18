@@ -1,5 +1,6 @@
 # import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
+# import MythicKeystoneDungeon from 'types/MythicKeystoneDungeon.graphql'
 # import MythicKeystonePeriod from 'types/MythicKeystonePeriod.graphql'
 # import MythicKeystoneSeason from 'types/MythicKeystoneSeason.graphql'
 # import MythicRaidLeaderboard from 'types/MythicRaidLeaderboard.graphql'
@@ -34,4 +35,6 @@ type Query {
   mythicKeystonePeriod(id: ID!): MythicKeystonePeriod
   mythicKeystonePeriods: [MythicKeystonePeriod]
   currentMythicKeystonePeriod: MythicKeystonePeriod
+  mythicKeystoneDungeon(id: ID!): MythicKeystoneDungeon
+  mythicKeystoneDungeons: [MythicKeystoneDungeon]
 }
