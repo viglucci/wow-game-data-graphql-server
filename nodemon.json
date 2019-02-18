@@ -10,5 +10,5 @@
     "README",
     "package.json"
   ],
-  "watch": ["app/", "graphql/", "config/"]
+  "watch": ["src/"]
 }

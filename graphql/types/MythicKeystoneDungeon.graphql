@@ -1,10 +1,10 @@
-# import LocalizedString from 'LocalizedString.graphql'
 # import Zone from 'Zone.graphql'
 # import ZoneMap from 'ZoneMap.graphql'
+# import intl from '../directives/intl.graphql'
 
 type MythicKeystoneDungeon {
   id: ID!
-  name: LocalizedString
+  name: String @intl
   map: ZoneMap
   zone: Zone
 }

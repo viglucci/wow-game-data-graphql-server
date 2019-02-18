@@ -1,6 +1,6 @@
-# import LocalizedString from 'LocalizedString.graphql'
+# import intl from '../directives/intl.graphql'
 
 type Zone {
-  name: LocalizedString
+  name: String @intl
   slug: String
 }

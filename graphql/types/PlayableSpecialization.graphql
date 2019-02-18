@@ -1,12 +1,12 @@
-# import LocalizedString from 'LocalizedString.graphql'
 # import LocalizedGenderedString from 'LocalizedGenderedString.graphql'
 # import PlayableSpecialization from 'PlayableSpecialization.graphql'
 # import PlayableRole from 'PlayableRole.graphql'
 # import TalentTier from 'TalentTier.graphql'
+# import intl from '../directives/intl.graphql'
 
 type PlayableSpecialization {
   id: ID!
-  name: LocalizedString
+  name: String @intl
   description: LocalizedGenderedString
   class: PlayableClass
   role: PlayableRole

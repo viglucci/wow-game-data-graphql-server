@@ -1,10 +1,12 @@
-# import LocalizedString from 'LocalizedString.graphql'
 # import LocalizedGenderedString from 'LocalizedGenderedString.graphql'
 # import Faction from 'Faction.graphql'
+# import intl from '../directives/intl.graphql'
+# import intl from '../directives/intl.graphql'
 
 type PlayableRace {
   id: ID!
-  name: LocalizedString
+  # name: String @intl
+  name: String @intl
   genderName: LocalizedGenderedString
   faction: [Faction]
 }

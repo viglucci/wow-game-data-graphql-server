@@ -1,10 +1,10 @@
-# import LocalizedString from 'LocalizedString.graphql'
+# import intl from '../directives/intl.graphql'
 
 type Talent {
   id: ID!
-  name: LocalizedString
-  castTime: LocalizedString
-  powerCost: LocalizedString
-  cooldown: LocalizedString
-  description: LocalizedString
+  name: String @intl
+  castTime: String @intl
+  powerCost: String @intl
+  cooldown: String @intl
+  description: String @intl
 }

@@ -1,15 +1,15 @@
 # import Region from 'Region.graphql'
 # import RealmType from 'RealmType.graphql'
 # import ConnectedRealm from 'ConnectedRealm.graphql'
-# import LocalizedString from 'LocalizedString.graphql'
+# import intl from '../directives/intl.graphql'
 
 type Realm {
   id: ID!
-  name: LocalizedString
+  name: String @intl
   slug: String
   connectedRealm: ConnectedRealm
   region: Region
-  category: LocalizedString
+  category: String @intl
   locale: String
   timezone: String
   type: RealmType
