@@ -1,4 +1,4 @@
 type WoWToken {
   price: Int
-  lastUpdatedTimestampSeconds: Int
+  lastUpdatedTimestamp: Int
 }

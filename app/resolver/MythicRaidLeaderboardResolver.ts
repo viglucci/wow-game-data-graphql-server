@@ -8,7 +8,9 @@ export default class MythicRaidLeaderboardResolver {
       Query: {
         mythicRaidLeaderboard: this.getMythicRaiderLeaderboard.bind(this)
       },
-      MythicRaidLeaderboard: {}
+      MythicRaidLeaderboardEntry: {
+        timestamp: this.getTimestamp.bind(this)
+      }
     };
   }
 
@@ -21,5 +23,9 @@ export default class MythicRaidLeaderboardResolver {
       raidSlug,
       factionSlug
     );
+  }
+
+  private async getTimestamp(entry: any, args: any, ctx: any) {
+    return entry.timestamp / 1000;
   }
 }

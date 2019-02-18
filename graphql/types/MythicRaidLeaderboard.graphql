@@ -1,16 +1,12 @@
+# import Guild from 'Guild.graphql'
 # import Zone from 'Zone.graphql'
-
-type Guild {
-  id: ID
-  name: String
-  realm: Realm
-}
 
 type MythicRaidLeaderboardEntry {
   guild: Guild
   faction: Faction
   region: String
   rank: Int
+  timestamp: Int
 }
 
 type MythicRaidLeaderboard {

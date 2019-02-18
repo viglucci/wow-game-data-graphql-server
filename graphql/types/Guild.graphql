@@ -1,0 +1,5 @@
+type Guild {
+  id: ID
+  name: String
+  realm: Realm
+}
