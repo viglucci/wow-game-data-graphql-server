@@ -18,6 +18,7 @@ import ResolverMapFactory from "./resolver/ResolverMapFactory";
 import DocumentDataSource from "./datasource/DocumentDataSource";
 import Logger from "./logging/Logger";
 import WoWTokenDataSource from "./datasource/WoWTokenDataSource";
+import MythicRaidLeaderboardDataSource from "./datasource/MythicRaidLeaderboardDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -73,7 +74,8 @@ server.setConfig(app => {
       classes: container.get(ClassesDataSource),
       specializations: container.get(SpecializationsDataSource),
       powerTypes: container.get(PowerTypesDataSource),
-      token: container.get(WoWTokenDataSource)
+      token: container.get(WoWTokenDataSource),
+      mythicRaidLeaderboards: container.get(MythicRaidLeaderboardDataSource)
     };
     return dataSources;
   };

@@ -1,7 +1,5 @@
 # import LocalizedString from 'LocalizedString.graphql'
 
-type Faction {
-  id: ID
-  type: String
+type Zone {
   name: LocalizedString
 }

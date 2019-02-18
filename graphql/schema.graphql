@@ -1,5 +1,6 @@
 # import ConnectedRealm from 'types/ConnectedRealm.graphql'
 # import Faction from 'types/Faction.graphql'
+# import MythicRaidLeaderboard from 'types/MythicRaidLeaderboard.graphql'
 # import PlayableRace from 'types/PlayableRace.graphql'
 # import PlayableClass from 'types/PlayableClass.graphql'
 # import PlayableSpecialization from 'types/PlayableSpecialization.graphql'
@@ -21,4 +22,8 @@ type Query {
   powerTypes: [PowerType]
   specialization(id: ID!): PlayableSpecialization
   specializations: [PlayableSpecialization]
+  mythicRaidLeaderboard(
+    raidSlug: String
+    factionSlug: String
+  ): MythicRaidLeaderboard
 }

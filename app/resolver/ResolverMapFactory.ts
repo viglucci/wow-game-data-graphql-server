@@ -9,6 +9,7 @@ import PowerTypeResolver from "./PowerTypeResolver";
 import PlayableSpecializationResolver from "./PlayableSpecializationResolver";
 import TalentResolver from "./TalentResolver";
 import WoWTokenResolver from "./WoWTokenResolver";
+import MythicRaidLeaderboardResolver from "./MythicRaidLeaderboardResolver";
 
 @injectable()
 export default class ResolverMapFactory {
@@ -39,6 +40,9 @@ export default class ResolverMapFactory {
   @inject(WoWTokenResolver)
   private tokenResolver: WoWTokenResolver;
 
+  @inject(MythicRaidLeaderboardResolver)
+  private mythicRaidLeaderboardResolver: MythicRaidLeaderboardResolver;
+
   public makeMap(): any {
     const map = extend(
       true,
@@ -51,7 +55,8 @@ export default class ResolverMapFactory {
       this.powerTypeResolver.getDefinition(),
       this.playableSpecializationResolver.getDefinition(),
       this.talentResolver.getDefinition(),
-      this.tokenResolver.getDefinition()
+      this.tokenResolver.getDefinition(),
+      this.mythicRaidLeaderboardResolver.getDefinition()
     );
 
     return map;
