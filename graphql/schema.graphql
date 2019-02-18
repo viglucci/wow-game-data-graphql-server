@@ -5,8 +5,10 @@
 # import PlayableSpecialization from 'types/PlayableSpecialization.graphql'
 # import PowerType from 'types/PowerType.graphql'
 # import Realm from 'types/Realm.graphql'
+# import WoWToken from 'types/WoWToken.graphql'
 
 type Query {
+  token: WoWToken
   race(id: ID!): PlayableRace
   races: [PlayableRace]
   class(id: ID!): PlayableClass

@@ -17,18 +17,34 @@ export default class Logger {
   }
 
   info(object: any, message?: string) {
+    if (!message) {
+      message = object;
+      object = null;
+    }
     this.logger.info(object, message);
   }
 
   error(object: any, message?: string) {
+    if (!message) {
+      message = object;
+      object = null;
+    }
     this.logger.error(object, message);
   }
 
   warn(object: any, message?: string) {
+    if (!message) {
+      message = object;
+      object = null;
+    }
     this.logger.warn(object, message);
   }
 
   debug(object: any, message?: string) {
+    if (!message) {
+      message = object;
+      object = null;
+    }
     this.logger.debug(object, message);
   }
 }

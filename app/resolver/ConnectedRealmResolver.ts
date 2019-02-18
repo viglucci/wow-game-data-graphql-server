@@ -1,6 +1,6 @@
-import { injectable, inject } from "../ioc/ioc";
-import ConnectedRealmMapper from "../mapper/ConnectedRealmMapper";
 import IDataSources from "../interfaces/IDataSources";
+import { inject, injectable } from "../ioc/ioc";
+import ConnectedRealmMapper from "../mapper/ConnectedRealmMapper";
 
 @injectable()
 export default class ConnectedRealmResolver {

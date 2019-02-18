@@ -1,0 +1,4 @@
+type WoWToken {
+  lastUpdatedTimestampMilli: Int
+  price: Int
+}

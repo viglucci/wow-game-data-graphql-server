@@ -1,6 +1,6 @@
-import { injectable } from "../ioc/ioc";
 import IDataSources from "../interfaces/IDataSources";
 import IMediaDocument from "../interfaces/IMediaDocument";
+import { injectable } from "../ioc/ioc";
 
 @injectable()
 export default class PlayableClassResolver {

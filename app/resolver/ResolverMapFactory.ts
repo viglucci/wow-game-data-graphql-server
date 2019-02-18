@@ -8,6 +8,7 @@ import LocalizedGenderedStringResolver from "./LocalizedGenderedStringResolver";
 import PowerTypeResolver from "./PowerTypeResolver";
 import PlayableSpecializationResolver from "./PlayableSpecializationResolver";
 import TalentResolver from "./TalentResolver";
+import WoWTokenResolver from "./WoWTokenResolver";
 
 @injectable()
 export default class ResolverMapFactory {
@@ -35,6 +36,9 @@ export default class ResolverMapFactory {
   @inject(TalentResolver)
   private talentResolver: TalentResolver;
 
+  @inject(WoWTokenResolver)
+  private tokenResolver: WoWTokenResolver;
+
   public makeMap(): any {
     const map = extend(
       true,
@@ -46,7 +50,8 @@ export default class ResolverMapFactory {
       this.localizedGenderedNameResolver.getDefinition(),
       this.powerTypeResolver.getDefinition(),
       this.playableSpecializationResolver.getDefinition(),
-      this.talentResolver.getDefinition()
+      this.talentResolver.getDefinition(),
+      this.tokenResolver.getDefinition()
     );
 
     return map;

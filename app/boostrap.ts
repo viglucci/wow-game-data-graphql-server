@@ -16,6 +16,8 @@ import { container } from "./ioc/ioc";
 import "./ioc/loader";
 import ResolverMapFactory from "./resolver/ResolverMapFactory";
 import DocumentDataSource from "./datasource/DocumentDataSource";
+import Logger from "./logging/Logger";
+import WoWTokenDataSource from "./datasource/WoWTokenDataSource";
 
 let server = new InversifyExpressServer(container);
 
@@ -50,10 +52,14 @@ server.setConfig(app => {
 
   app.use(bodyParser.json());
 
+  const logger = container.get(Logger);
+
+  logger.debug("Starting graphql schema compilation");
   const schema = importSchema(`graphql/schema.graphql`);
   const typeDefs = gql`
     ${schema}
   `;
+  logger.debug("Completed graphql schema compilation");
 
   // Provide resolver functions for your schema fields
   const resolverMapFactory = container.get(ResolverMapFactory);
@@ -66,7 +72,8 @@ server.setConfig(app => {
       realms: container.get(RealmsDataSource),
       classes: container.get(ClassesDataSource),
       specializations: container.get(SpecializationsDataSource),
-      powerTypes: container.get(PowerTypesDataSource)
+      powerTypes: container.get(PowerTypesDataSource),
+      token: container.get(WoWTokenDataSource)
     };
     return dataSources;
   };

@@ -6,6 +6,7 @@ import PowerTypesDataSource from "../datasource/PowerTypesDataSource";
 import RacesDataSource from "../datasource/RacesDataSource";
 import RealmsDataSource from "../datasource/RealmsDataSource";
 import SpecializationsDataSource from "../datasource/SpecializationsDataSource";
+import WoWTokenDataSource from "../datasource/WoWTokenDataSource";
 
 export default interface IDataSources extends DataSources<DataSource> {
   document: DocumentDataSource;
@@ -14,4 +15,5 @@ export default interface IDataSources extends DataSources<DataSource> {
   realms: RealmsDataSource;
   powerTypes: PowerTypesDataSource;
   specializations: SpecializationsDataSource;
+  token: WoWTokenDataSource;
 }

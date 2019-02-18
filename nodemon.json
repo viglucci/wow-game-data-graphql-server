@@ -1,6 +1,14 @@
 {
   "verbose": true,
-  "ext": "js,ts,json,graphql",
-  "exec": "ts-node ./app/start.ts | bunyan",
-  "ignore": ["*.test.js", "fixtures/*"]
+  "ext": "js,ts,graphql",
+  "exec": "tsc && npm run start | bunyan",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "dist/*",
+    "nodemon.json",
+    "README",
+    "package.json"
+  ],
+  "watch": ["app/", "graphql/", "config/"]
 }

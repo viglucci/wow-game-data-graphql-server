@@ -1,4 +1,4 @@
-import { injectable, inject } from "../ioc/ioc";
+import { injectable } from "../ioc/ioc";
 
 @injectable()
 export default class LocalizedGenderedStringResolver {
