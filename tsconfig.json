@@ -4,7 +4,7 @@
     "target": "es6",
     "lib": ["es6"],
     "typeRoots": ["node_modules/@types/"],
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

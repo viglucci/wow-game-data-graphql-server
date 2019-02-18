@@ -22,6 +22,7 @@
   "homepage": "https://github.com/viglucci/wow-game-data-graphql-server#readme",
   "dependencies": {
     "@types/bunyan": "^1.8.5",
+    "@types/starwars-names": "^1.6.0",
     "apollo-datasource-rest": "^0.3.1",
     "apollo-server": "^2.4.2",
     "apollo-server-express": "^2.4.2",

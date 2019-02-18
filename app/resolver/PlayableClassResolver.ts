@@ -1,6 +1,8 @@
 import IDataSources from "../interfaces/IDataSources";
 import IMediaDocument from "../interfaces/IMediaDocument";
 import { injectable } from "../ioc/ioc";
+import IKeyValuePair from "../interfaces/IKeyValuePair";
+import IMediaMap from "../interfaces/IMediaMap";
 
 @injectable()
 export default class PlayableClassResolver {
@@ -41,12 +43,15 @@ export default class PlayableClassResolver {
           const media: IMediaDocument = await dataSources.document.getDocumentFromDocumentLink(
             playableClass.media
           );
-          return media.assets.reduce((assetMap, asset) => {
-            assetMap[asset.key] = {
-              url: asset.value
-            };
-            return assetMap;
-          }, {});
+          return media.assets.reduce(
+            (assetMap: IMediaMap, asset: IKeyValuePair) => {
+              assetMap[asset.key] = {
+                url: asset.value
+              };
+              return assetMap;
+            },
+            {}
+          );
         }
       }
     };

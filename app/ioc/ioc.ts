@@ -14,7 +14,7 @@ let container = new Container({
 
 container.load(buildProviderModule());
 
-let provideNamed = function(identifier, name) {
+let provideNamed = function(identifier: any, name: string) {
   return fluentProvide(identifier)
     .whenTargetNamed(name)
     .done();

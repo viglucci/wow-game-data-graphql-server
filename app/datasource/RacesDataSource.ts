@@ -1,5 +1,7 @@
 import { injectable } from "../ioc/ioc";
 import GameDataAPIDataSource from "./GameDataAPIDataSource";
+import IDocumentLink from "../interfaces/IDocumentLink";
+import INamedDocumentLink from "../interfaces/INamedDocumentLink";
 
 @injectable()
 export default class RacesDataSource extends GameDataAPIDataSource {
@@ -7,9 +9,11 @@ export default class RacesDataSource extends GameDataAPIDataSource {
     const index = await this.getResource("/race/index", {
       namespace: "static-us"
     });
-    const individualFetches = index.races.map(async raceLink => {
-      return this.getResource(raceLink.key);
-    });
+    const individualFetches = index.races.map(
+      async (raceLink: INamedDocumentLink) => {
+        return this.getResource(raceLink.key);
+      }
+    );
     return await Promise.all(individualFetches);
   }
 

@@ -38,7 +38,11 @@ export default class RealmResolver {
     return await dataSources.realms.getAllRealms();
   }
 
-  protected async resolveRealm(realm: any, { id }, { dataSources }) {
+  protected async resolveRealm(
+    realm: any,
+    { id }: { id: string },
+    { dataSources }: { dataSources: IDataSources }
+  ) {
     return await dataSources.realms.getRealmById(id);
   }
 }
