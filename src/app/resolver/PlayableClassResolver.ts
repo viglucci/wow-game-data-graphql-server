@@ -9,7 +9,7 @@ export default class PlayableClassResolver {
   @inject(MediaMapper)
   private mediaMapper: MediaMapper;
 
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         classes: this.classes.bind(this),

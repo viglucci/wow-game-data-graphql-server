@@ -7,6 +7,9 @@ import ConfigManager from '../config/Config';
 
 @injectable()
 export default abstract class GameDataAPIDataSource extends RESTDataSource {
+
+  public basePath = 'data/wow/';
+  public baseURL = 'https://us.api.blizzard.com/data/wow/';
   @inject(OAuthTokenManager)
   protected tokenManager: OAuthTokenManager;
 
@@ -15,9 +18,6 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
 
   @inject(Logger)
   protected logger: Logger;
-
-  public basePath = 'data/wow/';
-  public baseURL = 'https://us.api.blizzard.com/data/wow/';
 
   private defaultRegion: string;
   private regionToHostMap: any;
@@ -35,7 +35,7 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
     );
   }
 
-  async resolveURL(request: RequestOptions) {
+  public async resolveURL(request: RequestOptions) {
     let region = request.params.get('region');
     if (region) {
       request.params.delete('region');
@@ -82,7 +82,7 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
     });
   }
 
-  combineParams(paramsA?: any, paramsB?: any) {
+  public combineParams(paramsA?: any, paramsB?: any) {
     if (!paramsA) {
       paramsA = {};
     }

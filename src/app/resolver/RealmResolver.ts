@@ -5,9 +5,9 @@ import RealmMapper from '../mapper/RealmMapper';
 @injectable()
 export default class RealmResolver {
   @inject(RealmMapper)
-  realmMapper: RealmMapper;
+  private realmMapper: RealmMapper;
 
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         realms: this.getAllRealms.bind(this),

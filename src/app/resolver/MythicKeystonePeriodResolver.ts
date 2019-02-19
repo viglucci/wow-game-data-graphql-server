@@ -3,7 +3,7 @@ import IDataSources from '../../interfaces/IDataSources';
 
 @injectable()
 export default class MythicKeystonePeriodResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         mythicKeystonePeriods: this.getMythicKeystonePeriods.bind(this),

@@ -16,7 +16,7 @@ export default class Logger {
     });
   }
 
-  info(object: any, message?: string) {
+  public info(object: any, message?: string) {
     if (!message) {
       message = object;
       object = null;
@@ -24,7 +24,7 @@ export default class Logger {
     this.logger.info(object, message);
   }
 
-  error(object: any, message?: string) {
+  public error(object: any, message?: string) {
     if (!message) {
       message = object;
       object = null;
@@ -32,7 +32,7 @@ export default class Logger {
     this.logger.error(object, message);
   }
 
-  warn(object: any, message?: string) {
+  public warn(object: any, message?: string) {
     if (!message) {
       message = object;
       object = null;
@@ -40,7 +40,7 @@ export default class Logger {
     this.logger.warn(object, message);
   }
 
-  debug(object: any, message?: string) {
+  public debug(object: any, message?: string) {
     if (!message) {
       message = object;
       object = null;

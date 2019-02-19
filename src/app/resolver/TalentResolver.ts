@@ -6,7 +6,7 @@ export default class TalentResolver {
   @inject(TalentMapper)
   private talentMapper: TalentMapper;
 
-  getDefinition() {
+  public getDefinition() {
     return {
       TalentTier: {
         talents: this.getTalentTierTalents.bind(this)

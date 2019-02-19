@@ -5,9 +5,9 @@ import ConnectedRealmMapper from '../mapper/ConnectedRealmMapper';
 @injectable()
 export default class ConnectedRealmResolver {
   @inject(ConnectedRealmMapper)
-  connectedRealmMapper: ConnectedRealmMapper;
+  public connectedRealmMapper: ConnectedRealmMapper;
 
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         connectedRealms: this.getConnectedRealms.bind(this),

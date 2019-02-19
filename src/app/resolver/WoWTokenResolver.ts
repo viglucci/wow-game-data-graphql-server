@@ -1,11 +1,11 @@
 import { injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
-import IWoWTokenFetchInput from '../../interfaces/IWoWTokenFetchInput';
-import IFetchInput from '../../interfaces/IFetchInput';
+import IWoWTokenQueryInput from '../../interfaces/IWoWTokenQueryInput';
+import IQueryInput from '../../interfaces/IQueryInput';
 
 @injectable()
 export default class WoWTokenResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         wowToken: this.getWowToken.bind(this)
@@ -18,7 +18,7 @@ export default class WoWTokenResolver {
 
   private async getWowToken(
     root: any,
-    args: IFetchInput<IWoWTokenFetchInput>,
+    args: IQueryInput<IWoWTokenQueryInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
     return await dataSources.token.wowToken(args.input.region);

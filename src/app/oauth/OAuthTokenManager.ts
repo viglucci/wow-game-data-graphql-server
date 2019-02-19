@@ -29,7 +29,7 @@ export default class OAuthTokenManager {
     });
   }
 
-  async getToken() {
+  public async getToken() {
     if (this.token && !this.token.expired()) {
       return this.token.token;
     } else {

@@ -2,7 +2,7 @@ import { injectable } from 'inversify';
 
 @injectable()
 export default class MythicRaidLeaderboardEntryResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       MythicRaidLeaderboardEntry: {
         guild: this.getGuildFromEntry.bind(this),
