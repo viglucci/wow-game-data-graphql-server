@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
-import IWoWTokenQueryInput from '../../interfaces/IWoWTokenQueryInput';
 import IQueryInput from '../../interfaces/IQueryInput';
+import IWoWTokenQueryInput from '../../interfaces/IWoWTokenQueryInput';
 
 @injectable()
 export default class WoWTokenResolver {

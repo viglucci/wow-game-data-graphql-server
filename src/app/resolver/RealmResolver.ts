@@ -1,6 +1,8 @@
 import { inject, injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
 import RealmMapper from '../mapper/RealmMapper';
+import IQueryInput from '../../interfaces/IQueryInput';
+import IByIdSlug from '../../interfaces/IByIdSlug';
 
 @injectable()
 export default class RealmResolver {
@@ -40,9 +42,9 @@ export default class RealmResolver {
 
   protected async getRealmBySlug(
     realm: any,
-    { slug }: { slug: string },
+    args: IQueryInput<IByIdSlug>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.realms.getRealmBySlug(slug);
+    return await dataSources.realms.getRealmBySlug(args.input.slug);
   }
 }

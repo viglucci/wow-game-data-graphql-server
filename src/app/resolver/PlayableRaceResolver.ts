@@ -1,5 +1,7 @@
 import { injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
+import IQueryInput from '../../interfaces/IQueryInput';
+import IByIdInput from '../../interfaces/IByIdInput';
 
 @injectable()
 export default class PlayableRaceResolver {
@@ -25,10 +27,10 @@ export default class PlayableRaceResolver {
 
   private async getRaceById(
     race: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.races.raceById(id);
+    return await dataSources.races.raceById(args.input.id);
   }
 
   private getGenderedName(race: any) {

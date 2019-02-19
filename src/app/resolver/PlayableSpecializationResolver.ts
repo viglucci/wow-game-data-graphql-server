@@ -1,5 +1,7 @@
 import { injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
+import IQueryInput from '../../interfaces/IQueryInput';
+import IByIdInput from '../../interfaces/IByIdInput';
 
 @injectable()
 export default class PlayableSpecializationResolver {
@@ -15,10 +17,12 @@ export default class PlayableSpecializationResolver {
         },
         specializationById: async (
           race: any,
-          { id }: { id: string },
+          args: IQueryInput<IByIdInput>,
           { dataSources }: { dataSources: IDataSources }
         ) => {
-          return await dataSources.specializations.specializationById(id);
+          return await dataSources.specializations.specializationById(
+            args.input.id
+          );
         }
       },
       PlayableSpecialization: {

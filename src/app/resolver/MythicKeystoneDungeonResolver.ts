@@ -1,5 +1,7 @@
 import { injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
+import IQueryInput from '../../interfaces/IQueryInput';
+import IByIdInput from '../../interfaces/IByIdInput';
 
 @injectable()
 export default class MythicKeystoneDungeonResolver {
@@ -22,9 +24,11 @@ export default class MythicKeystoneDungeonResolver {
 
   private getMythicKeystoneDungeon(
     period: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystoneDungeon.mythicKeystoneDungeonById(id);
+    return dataSources.mythicKeystoneDungeon.mythicKeystoneDungeonById(
+      args.input.id
+    );
   }
 }

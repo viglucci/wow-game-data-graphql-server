@@ -13,30 +13,32 @@
 
 #-- input types
 # import GetWoWTokenInput from 'input/GetWoWTokenInput.graphql'
+# import GetByIdInput from 'input/GetByIdInput.graphql'
+# import GetBySlugInput from 'input/GetBySlugInput.graphql'
 
 type Query {
   # races
   races: [PlayableRace]
-  raceById(id: ID!): PlayableRace
+  raceById(input: GetByIdInput!): PlayableRace
 
   # classes
   classes: [PlayableClass]
-  classById(id: ID!): PlayableClass
+  classById(input: GetByIdInput!): PlayableClass
 
   # realms
   realms: [Realm]
-  realmBySlug(slug: ID!): Realm
+  realmBySlug(input: GetBySlugInput!): Realm
 
   # connected realms
-  connectedRealmById(id: ID!): ConnectedRealm
+  connectedRealmById(input: GetByIdInput!): ConnectedRealm
   connectedRealms: [ConnectedRealm]
 
   # power types
-  powerTypeById(id: ID!): PowerType
+  powerTypeById(input: GetByIdInput!): PowerType
   powerTypes: [PowerType]
 
   # specializations
-  specializationById(id: ID!): PlayableSpecialization
+  specializationById(input: GetByIdInput!): PlayableSpecialization
   specializations: [PlayableSpecialization]
 
   # mythic raid leadboard
@@ -47,17 +49,17 @@ type Query {
 
   # mythic keystone seasons
   mythicKeystoneSeasons: [MythicKeystoneSeason]
-  mythicKeystoneSeasonById(id: ID!): MythicKeystoneSeason
+  mythicKeystoneSeasonById(input: GetByIdInput!): MythicKeystoneSeason
   currentMythicKeystoneSeason: MythicKeystoneSeason
 
   # mythic keystone periods
   mythicKeystonePeriods: [MythicKeystonePeriod]
-  mythicKeystonePeriodById(id: ID!): MythicKeystonePeriod
+  mythicKeystonePeriodById(input: GetByIdInput!): MythicKeystonePeriod
   currentMythicKeystonePeriod: MythicKeystonePeriod
 
   # mythic keystone dungeons
   mythicKeystoneDungeons: [MythicKeystoneDungeon]
-  mythicKeystoneDungeonById(id: ID!): MythicKeystoneDungeon
+  mythicKeystoneDungeonById(input: GetByIdInput!): MythicKeystoneDungeon
 
   # wow token
   wowToken(input: GetWoWTokenInput): WoWToken

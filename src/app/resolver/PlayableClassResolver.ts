@@ -3,6 +3,8 @@ import IDataSources from '../../interfaces/IDataSources';
 import IMediaDocument from '../../interfaces/IMediaDocument';
 import INamedDocumentLink from '../../interfaces/INamedDocumentLink';
 import MediaMapper from '../mapper/MediaMapper';
+import IByIdInput from '../../interfaces/IByIdInput';
+import IQueryInput from '../../interfaces/IQueryInput';
 
 @injectable()
 export default class PlayableClassResolver {
@@ -26,7 +28,7 @@ export default class PlayableClassResolver {
 
   private async classes(
     root: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
     return await dataSources.classes.getAllClasses();
@@ -34,10 +36,10 @@ export default class PlayableClassResolver {
 
   private async getClassById(
     root: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.classes.cassById(id);
+    return await dataSources.classes.cassById(args.input.id);
   }
 
   private async getPowerType(

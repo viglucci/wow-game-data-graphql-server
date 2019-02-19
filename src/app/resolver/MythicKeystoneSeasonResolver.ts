@@ -1,5 +1,7 @@
 import { injectable } from 'inversify';
+import IByIdInput from '../../interfaces/IByIdInput';
 import IDataSources from '../../interfaces/IDataSources';
+import IQueryInput from '../../interfaces/IQueryInput';
 
 @injectable()
 export default class MythicKeystoneSeasonResolver {
@@ -28,15 +30,15 @@ export default class MythicKeystoneSeasonResolver {
 
   private getMythicKeystoneSeason(
     season: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return dataSources.mythicKeystone.mythicKeystoneSeasonById(id);
+    return dataSources.mythicKeystone.mythicKeystoneSeasonById(args.input.id);
   }
 
   private currentMythicKeystoneSeason(
     season: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
     return dataSources.mythicKeystone.currentMythicKeystoneSeason();
@@ -44,7 +46,7 @@ export default class MythicKeystoneSeasonResolver {
 
   private mythicKeystonePeriodsForSeason(
     season: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
     return dataSources.mythicKeystone.resolveMythicKeystonePeriodLinks(

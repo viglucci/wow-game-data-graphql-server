@@ -1,6 +1,8 @@
 import { inject, injectable } from 'inversify';
 import IDataSources from '../../interfaces/IDataSources';
 import ConnectedRealmMapper from '../mapper/ConnectedRealmMapper';
+import IQueryInput from '../../interfaces/IQueryInput';
+import IByIdInput from '../../interfaces/IByIdInput';
 
 @injectable()
 export default class ConnectedRealmResolver {
@@ -34,9 +36,9 @@ export default class ConnectedRealmResolver {
 
   protected async getConnectedRealm(
     connectedRealm: any,
-    { id }: { id: string },
+    args: IQueryInput<IByIdInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.realms.connectedRealmById(id);
+    return await dataSources.realms.connectedRealmById(args.input.id);
   }
 }
