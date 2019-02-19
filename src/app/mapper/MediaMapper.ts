@@ -1,7 +1,7 @@
-import { injectable } from "inversify";
+import { injectable } from 'inversify';
 
-import IKeyValuePair from "../../interfaces/IKeyValuePair";
-import IMediaMap from "../../interfaces/IMediaMap";
+import IKeyValuePair from '../../interfaces/IKeyValuePair';
+import IMediaMap from '../../interfaces/IMediaMap';
 
 @injectable()
 export default class MediaMapper {

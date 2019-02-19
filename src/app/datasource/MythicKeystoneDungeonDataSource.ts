@@ -1,12 +1,12 @@
-import { injectable } from "../ioc/ioc";
-import GameDataAPIDataSource from "./GameDataAPIDataSource";
-import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
+import { injectable } from '../ioc/ioc';
+import GameDataAPIDataSource from './GameDataAPIDataSource';
+import INamedDocumentLink from '../../interfaces/INamedDocumentLink';
 
 @injectable()
 export default class MythicKeystoneDungeonDataSource extends GameDataAPIDataSource {
   public async mythicKeystoneDungeons(): Promise<any> {
     const index = await this.getResource(`/mythic-keystone/dungeon/index`, {
-      namespace: "DYNAMIC"
+      namespace: 'DYNAMIC'
     });
     const individualFetches = index.dungeons.map(
       async (documentLink: INamedDocumentLink) => {
@@ -18,7 +18,7 @@ export default class MythicKeystoneDungeonDataSource extends GameDataAPIDataSour
 
   public async mythicKeystoneDungeonById(id: string): Promise<any> {
     return await this.getResource(`/mythic-keystone/dungeon/${id}`, {
-      namespace: "DYNAMIC"
+      namespace: 'DYNAMIC'
     });
   }
 }

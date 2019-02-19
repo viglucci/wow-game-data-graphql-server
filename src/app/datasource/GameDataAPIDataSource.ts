@@ -1,9 +1,9 @@
-import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
-import { inject, injectable } from "inversify";
-import OAuthTokenManager from "../oauth/OAuthTokenManager";
-import IDocumentLink from "../../interfaces/IDocumentLink";
-import Logger from "../logging/Logger";
-import ConfigManager from "../config/Config";
+import { RequestOptions, RESTDataSource } from 'apollo-datasource-rest';
+import { inject, injectable } from 'inversify';
+import OAuthTokenManager from '../oauth/OAuthTokenManager';
+import IDocumentLink from '../../interfaces/IDocumentLink';
+import Logger from '../logging/Logger';
+import ConfigManager from '../config/Config';
 
 @injectable()
 export default abstract class GameDataAPIDataSource extends RESTDataSource {
@@ -16,8 +16,8 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
   @inject(Logger)
   protected logger: Logger;
 
-  public basePath = "data/wow/";
-  public baseURL = "https://us.api.blizzard.com/data/wow/";
+  public basePath = 'data/wow/';
+  public baseURL = 'https://us.api.blizzard.com/data/wow/';
 
   private defaultRegion: string;
   private regionToHostMap: any;
@@ -28,17 +28,17 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
     configManager: ConfigManager
   ) {
     super();
-    this.defaultRegion = configManager.get("datasources.gdapi.defaultRegion");
-    this.regionToHostMap = configManager.get("datasources.gdapi.hosts");
+    this.defaultRegion = configManager.get('datasources.gdapi.defaultRegion');
+    this.regionToHostMap = configManager.get('datasources.gdapi.hosts');
     this.regionalNamespaceMap = configManager.get(
-      "datasources.gdapi.namespaces"
+      'datasources.gdapi.namespaces'
     );
   }
 
   async resolveURL(request: RequestOptions) {
-    let region = request.params.get("region");
+    let region = request.params.get('region');
     if (region) {
-      request.params.delete("region");
+      request.params.delete('region');
     } else {
       region = this.defaultRegion;
     }
@@ -48,13 +48,13 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
     // only map namespace if it is explicetly set on params
     // otherwise assume that we are resolving a link that already
     // has the namespace included
-    let namespace = request.params.get("namespace");
+    let namespace = request.params.get('namespace');
     if (namespace) {
-      request.params.delete("namespace");
+      request.params.delete('namespace');
       let regionalNamespaceMap = this.regionalNamespaceMap[
         namespace.toLocaleLowerCase()
       ];
-      request.params.set("namespace", regionalNamespaceMap[region]);
+      request.params.set('namespace', regionalNamespaceMap[region]);
     }
 
     return super.resolveURL(request);
@@ -62,7 +62,7 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
 
   public async willSendRequest(request: RequestOptions): Promise<void> {
     const token = await this.tokenManager.getToken();
-    request.headers.set("Authorization", `Bearer ${token.access_token}`);
+    request.headers.set('Authorization', `Bearer ${token.access_token}`);
   }
 
   public getResource(
@@ -70,7 +70,7 @@ export default abstract class GameDataAPIDataSource extends RESTDataSource {
     params?: any
   ): Promise<any> {
     let resourcePath: string;
-    if (typeof pathOrDocumentLink === "string") {
+    if (typeof pathOrDocumentLink === 'string') {
       resourcePath = pathOrDocumentLink;
     } else {
       resourcePath = pathOrDocumentLink.href;

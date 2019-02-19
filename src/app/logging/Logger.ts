@@ -1,6 +1,6 @@
-import bunyan from "bunyan";
-import { injectable, inject } from "inversify";
-import ConfigManager from "../config/Config";
+import bunyan from 'bunyan';
+import { injectable, inject } from 'inversify';
+import ConfigManager from '../config/Config';
 
 @injectable()
 export default class Logger {
@@ -11,8 +11,8 @@ export default class Logger {
     configManager: ConfigManager
   ) {
     this.logger = bunyan.createLogger({
-      name: "app",
-      level: configManager.get("logging.level")
+      name: 'app',
+      level: configManager.get('logging.level')
     });
   }
 

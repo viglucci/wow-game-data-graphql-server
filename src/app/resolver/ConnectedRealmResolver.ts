@@ -1,6 +1,6 @@
-import { inject, injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
-import ConnectedRealmMapper from "../mapper/ConnectedRealmMapper";
+import { inject, injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
+import ConnectedRealmMapper from '../mapper/ConnectedRealmMapper';
 
 @injectable()
 export default class ConnectedRealmResolver {

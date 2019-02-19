@@ -1,5 +1,5 @@
-import { inject, injectable } from "inversify";
-import TalentMapper from "../mapper/TalentMapper";
+import { inject, injectable } from 'inversify';
+import TalentMapper from '../mapper/TalentMapper';
 
 @injectable()
 export default class TalentResolver {

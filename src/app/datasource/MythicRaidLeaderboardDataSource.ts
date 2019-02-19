@@ -1,5 +1,5 @@
-import { injectable } from "../ioc/ioc";
-import GameDataAPIDataSource from "./GameDataAPIDataSource";
+import { injectable } from '../ioc/ioc';
+import GameDataAPIDataSource from './GameDataAPIDataSource';
 
 @injectable()
 export default class MythicRaidLeaderboardDataSource extends GameDataAPIDataSource {
@@ -10,7 +10,7 @@ export default class MythicRaidLeaderboardDataSource extends GameDataAPIDataSour
     return await this.getResource(
       `/leaderboard/hall-of-fame/${raidSlug}/${factionSlug}`,
       {
-        namespace: "DYNAMIC"
+        namespace: 'DYNAMIC'
       }
     );
   }

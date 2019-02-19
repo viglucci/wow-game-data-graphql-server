@@ -1,9 +1,9 @@
-import { injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
+import { injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
 
 @injectable()
 export default class MythicKeystoneDungeonResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         mythicKeystoneDungeons: this.getMythicKeystoneDungeons.bind(this),

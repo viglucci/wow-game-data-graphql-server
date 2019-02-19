@@ -1,6 +1,6 @@
-import { inject, injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
-import RealmMapper from "../mapper/RealmMapper";
+import { inject, injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
+import RealmMapper from '../mapper/RealmMapper';
 
 @injectable()
 export default class RealmResolver {

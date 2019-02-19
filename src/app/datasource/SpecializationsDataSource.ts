@@ -1,12 +1,12 @@
-import { injectable } from "../ioc/ioc";
-import GameDataAPIDataSource from "./GameDataAPIDataSource";
-import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
+import { injectable } from '../ioc/ioc';
+import GameDataAPIDataSource from './GameDataAPIDataSource';
+import INamedDocumentLink from '../../interfaces/INamedDocumentLink';
 
 @injectable()
 export default class SpecializationsDataSource extends GameDataAPIDataSource {
   public async getAllSpecializations(): Promise<any> {
-    const index = await this.getResource("/playable-specialization/index", {
-      namespace: "STATIC"
+    const index = await this.getResource('/playable-specialization/index', {
+      namespace: 'STATIC'
     });
     const individualFetches = index.character_specializations.map(
       async (documentLink: INamedDocumentLink) => {
@@ -18,7 +18,7 @@ export default class SpecializationsDataSource extends GameDataAPIDataSource {
 
   public async specializationById(id: string): Promise<any> {
     return await this.getResource(`/playable-specialization/${id}`, {
-      namespace: "STATIC"
+      namespace: 'STATIC'
     });
   }
 }

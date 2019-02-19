@@ -1,5 +1,7 @@
-import { injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
+import { injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
+import IWoWTokenFetchInput from '../../interfaces/IWoWTokenFetchInput';
+import IFetchInput from '../../interfaces/IFetchInput';
 
 @injectable()
 export default class WoWTokenResolver {
@@ -16,10 +18,10 @@ export default class WoWTokenResolver {
 
   private async getWowToken(
     root: any,
-    { region }: { region: string },
+    args: IFetchInput<IWoWTokenFetchInput>,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.token.wowToken(region);
+    return await dataSources.token.wowToken(args.input.region);
   }
 
   private async getLastUpdatedTimestamp(token: any, args: any, ctx: any) {

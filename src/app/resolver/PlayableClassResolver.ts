@@ -1,8 +1,8 @@
-import { inject, injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
-import IMediaDocument from "../../interfaces/IMediaDocument";
-import INamedDocumentLink from "../../interfaces/INamedDocumentLink";
-import MediaMapper from "../mapper/MediaMapper";
+import { inject, injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
+import IMediaDocument from '../../interfaces/IMediaDocument';
+import INamedDocumentLink from '../../interfaces/INamedDocumentLink';
+import MediaMapper from '../mapper/MediaMapper';
 
 @injectable()
 export default class PlayableClassResolver {

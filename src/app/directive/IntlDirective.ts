@@ -1,5 +1,5 @@
-import { SchemaDirectiveVisitor } from "graphql-tools";
-import { defaultFieldResolver } from "graphql";
+import { SchemaDirectiveVisitor } from 'graphql-tools';
+import { defaultFieldResolver } from 'graphql';
 
 export default class IntlDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field: any) {

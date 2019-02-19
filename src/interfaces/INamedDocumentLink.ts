@@ -1,4 +1,4 @@
-import IDocumentLink from "./IDocumentLink";
+import IDocumentLink from './IDocumentLink';
 
 export default interface INamedDocumentLink {
   key: IDocumentLink;

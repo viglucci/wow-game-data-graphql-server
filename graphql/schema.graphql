@@ -11,6 +11,9 @@
 # import Realm from 'types/Realm.graphql'
 # import WoWToken from 'types/WoWToken.graphql'
 
+#-- input types
+# import GetWoWTokenInput from 'input/GetWoWTokenInput.graphql'
+
 type Query {
   # races
   races: [PlayableRace]
@@ -57,5 +60,5 @@ type Query {
   mythicKeystoneDungeonById(id: ID!): MythicKeystoneDungeon
 
   # wow token
-  wowToken(region: String): WoWToken
+  wowToken(input: GetWoWTokenInput): WoWToken
 }

@@ -1,5 +1,5 @@
-import config from "config";
-import { injectable } from "inversify";
+import config from 'config';
+import { injectable } from 'inversify';
 
 @injectable()
 export default class ConfigManager {

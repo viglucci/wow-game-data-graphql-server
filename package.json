@@ -8,7 +8,8 @@
     "test:all": "npm test **/*.spec.ts",
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node ./dist/start.js"
+    "start": "node ./dist/start.js",
+    "lint:fix": "tslint --project . --fix"
   },
   "repository": {
     "type": "git",
@@ -79,7 +80,9 @@
     "nyc": "^13.3.0",
     "prettier": "1.16.4",
     "ts-node": "8.0.2",
-    "typescript": "3.3.3"
+    "tslint": "^5.12.1",
+    "typescript": "3.3.3",
+    "typescript-tslint-plugin": "^0.3.1"
   },
   "nyc": {
     "exclude": [

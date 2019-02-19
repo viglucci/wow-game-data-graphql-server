@@ -1,14 +1,14 @@
-import { Container, inject, injectable } from "inversify";
+import { Container, inject, injectable } from 'inversify';
 import {
   autoProvide,
   buildProviderModule,
   provide,
   fluentProvide
-} from "inversify-binding-decorators";
+} from 'inversify-binding-decorators';
 
 let container = new Container({
   autoBindInjectable: true,
-  defaultScope: "Singleton",
+  defaultScope: 'Singleton',
   skipBaseClassChecks: true
 });
 

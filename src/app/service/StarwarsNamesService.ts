@@ -1,6 +1,6 @@
-import matchSorter from "match-sorter";
-import names from "starwars-names";
-import { injectable } from "inversify";
+import matchSorter from 'match-sorter';
+import names from 'starwars-names';
+import { injectable } from 'inversify';
 
 @injectable()
 export default class HelloService {

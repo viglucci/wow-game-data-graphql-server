@@ -1,9 +1,9 @@
-import { injectable } from "inversify";
-import IDataSources from "../../interfaces/IDataSources";
+import { injectable } from 'inversify';
+import IDataSources from '../../interfaces/IDataSources';
 
 @injectable()
 export default class GuildResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Guild: {
         realm: this.getRealmFromGuild.bind(this)
