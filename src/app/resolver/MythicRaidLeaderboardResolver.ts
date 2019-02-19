@@ -3,7 +3,7 @@ import IDataSources from '../../interfaces/IDataSources';
 
 @injectable()
 export default class MythicRaidLeaderboardResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         mythicRaidLeaderboard: this.getMythicRaiderLeaderboard.bind(this)
