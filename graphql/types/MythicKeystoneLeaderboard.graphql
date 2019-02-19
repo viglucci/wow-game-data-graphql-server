@@ -1,0 +1,10 @@
+# import intl from '../directives/intl.graphql'
+# import MythicKeystonePeriod from 'MythicKeystonePeriod.graphql'
+# import ConnectedRealm from 'ConnectedRealm.graphql'
+
+type MythicKeystoneLeaderboard {
+  id: ID!
+  name: String @intl
+  period: MythicKeystonePeriod
+  connectedRealm: ConnectedRealm
+}

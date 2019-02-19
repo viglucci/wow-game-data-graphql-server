@@ -1,5 +1,6 @@
-# import Region from 'Region.graphql'
 # import ConnectedRealm from 'ConnectedRealm.graphql'
+# import MythicKeystoneLeaderboardReference from 'MythicKeystoneLeaderboardReference.graphql'
+# import Region from 'Region.graphql'
 # import RealmPopulation from 'RealmPopulation.graphql'
 # import RealmStatus from 'RealmStatus.graphql'
 
@@ -9,4 +10,5 @@ type ConnectedRealm {
   status: RealmStatus
   population: RealmPopulation
   realms: [Realm]
+  mythicKeystoneLeaderboards: [MythicKeystoneLeaderboardReference]
 }

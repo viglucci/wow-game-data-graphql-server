@@ -21,7 +21,10 @@ export default class ConnectedRealmResolver {
         },
         realms: (connectedRealm: any) => {
           return connectedRealm.realms;
-        }
+        },
+        mythicKeystoneLeaderboards: this.getMythicKeystoneLeaderboardsForRealm.bind(
+          this
+        )
       }
     };
   }
@@ -40,5 +43,16 @@ export default class ConnectedRealmResolver {
     { dataSources }: { dataSources: IDataSources }
   ) {
     return await dataSources.realms.connectedRealmById(args.input.id);
+  }
+
+  protected async getMythicKeystoneLeaderboardsForRealm(
+    connectedRealm: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    const leaderboardIndex = await dataSources.mythicKeystone.getResource(
+      connectedRealm.mythic_leaderboards
+    );
+    return leaderboardIndex.current_leaderboards;
   }
 }

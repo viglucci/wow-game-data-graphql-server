@@ -1,0 +1,8 @@
+# import intl from '../directives/intl.graphql'
+# import MythicKeystoneLeaderboard from 'MythicKeystoneLeaderboard.graphql'
+
+type MythicKeystoneLeaderboardReference {
+  id: ID!
+  name: String @intl
+  leaderboard: MythicKeystoneLeaderboard
+}

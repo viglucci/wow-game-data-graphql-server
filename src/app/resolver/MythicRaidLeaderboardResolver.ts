@@ -6,12 +6,12 @@ export default class MythicRaidLeaderboardResolver {
   public getDefinition() {
     return {
       Query: {
-        mythicRaidLeaderboard: this.getMythicRaiderLeaderboard.bind(this)
+        mythicRaidLeaderboard: this.getMythicRaidLeaderboard.bind(this)
       }
     };
   }
 
-  private async getMythicRaiderLeaderboard(
+  private async getMythicRaidLeaderboard(
     root: any,
     { raidSlug, factionSlug }: { raidSlug: string; factionSlug: string },
     { dataSources }: { dataSources: IDataSources }
