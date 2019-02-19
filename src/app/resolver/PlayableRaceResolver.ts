@@ -3,7 +3,7 @@ import IDataSources from '../../interfaces/IDataSources';
 
 @injectable()
 export default class PlayableRaceResolver {
-  getDefinition() {
+  public getDefinition() {
     return {
       Query: {
         races: this.getRaces.bind(this),
