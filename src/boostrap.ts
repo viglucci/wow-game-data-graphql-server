@@ -24,6 +24,7 @@ import Logger from './app/logging/Logger';
 import ResolverMapFactory from './app/resolver/ResolverMapFactory';
 import IDataSources from './interfaces/IDataSources';
 import responseTime from 'response-time';
+import RegionDataSource from './app/datasource/RegionDataSource';
 
 let server = new InversifyExpressServer(container);
 
@@ -89,7 +90,8 @@ server.setConfig(app => {
       token: container.get(WoWTokenDataSource),
       mythicRaidLeaderboards: container.get(MythicRaidLeaderboardDataSource),
       mythicKeystone: container.get(MythicKeystoneDataSource),
-      mythicKeystoneDungeon: container.get(MythicKeystoneDungeonDataSource)
+      mythicKeystoneDungeon: container.get(MythicKeystoneDungeonDataSource),
+      region: container.get(RegionDataSource)
     };
     return dataSources;
   };

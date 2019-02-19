@@ -8,6 +8,7 @@ import MythicRaidLeaderboardDataSource from '../app/datasource/MythicRaidLeaderb
 import PowerTypesDataSource from '../app/datasource/PowerTypesDataSource';
 import RacesDataSource from '../app/datasource/RacesDataSource';
 import RealmsDataSource from '../app/datasource/RealmsDataSource';
+import RegionDataSource from '../app/datasource/RegionDataSource';
 import SpecializationsDataSource from '../app/datasource/SpecializationsDataSource';
 import WoWTokenDataSource from '../app/datasource/WoWTokenDataSource';
 
@@ -16,6 +17,7 @@ export default interface IDataSources extends DataSources<DataSource> {
   races: RacesDataSource;
   classes: ClassesDataSource;
   realms: RealmsDataSource;
+  region: RegionDataSource;
   powerTypes: PowerTypesDataSource;
   specializations: SpecializationsDataSource;
   token: WoWTokenDataSource;
