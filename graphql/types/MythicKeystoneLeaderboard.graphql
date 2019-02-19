@@ -1,10 +1,29 @@
 # import intl from '../directives/intl.graphql'
 # import MythicKeystonePeriod from 'MythicKeystonePeriod.graphql'
 # import ConnectedRealm from 'ConnectedRealm.graphql'
+# import Realm from 'Realm.graphql'
+# import Faction from 'Faction.graphql'
+# import PlayableSpecialization from 'PlayableSpecialization.graphql'
 
 type MythicKeystoneLeaderboard {
   id: ID!
   name: String @intl
   period: MythicKeystonePeriod
   connectedRealm: ConnectedRealm
+  entries: [MythicKeystoneLeaderboardEntry]
+}
+
+type MythicKeystoneLeaderboardEntry {
+  rank: Int
+  duration: Int
+  timestamp: Float
+  keystoneLevel: Int
+  groupMembers: [MythicKeystoneLeaderboardGroupMember]
+}
+
+type MythicKeystoneLeaderboardGroupMember {
+  name: String
+  realm: Realm
+  faction: Faction
+  specialization: PlayableSpecialization
 }

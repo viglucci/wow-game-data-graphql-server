@@ -5,28 +5,16 @@ import IDataSources from '../../interfaces/IDataSources';
 export default class MythicKeystoneLeaderboardResolver {
   public getDefinition() {
     return {
-      MythicKeystoneLeaderboardReference: {
-        leaderboard: this.getMythicKeystoneLeaderboardFromReference.bind(this)
-      },
       MythicKeystoneLeaderboard: {
-        id: this.getIdFromMythicKeystoneLeaderboard.bind(this),
-        period: this.getPeriodFromMythicKeystoneLeaderboard.bind(this),
-        connectedRealm: this.getConnectedRealmFromMythicKeystoneLeaderboard.bind(
-          this
-        )
+        id: this.getId.bind(this),
+        period: this.getPeriod.bind(this),
+        connectedRealm: this.getConnectedRealm.bind(this),
+        entries: this.getEntries.bind(this)
       }
     };
   }
 
-  private async getMythicKeystoneLeaderboardFromReference(
-    ref: any,
-    args: any,
-    { dataSources }: { dataSources: IDataSources }
-  ) {
-    return await dataSources.mythicKeystone.getResource(ref.key);
-  }
-
-  private async getIdFromMythicKeystoneLeaderboard(
+  private async getId(
     leaderboard: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
@@ -34,17 +22,15 @@ export default class MythicKeystoneLeaderboardResolver {
     return leaderboard.map_challenge_mode_id;
   }
 
-  private async getConnectedRealmFromMythicKeystoneLeaderboard(
+  private async getConnectedRealm(
     leaderboard: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
   ) {
-    return await dataSources.mythicKeystone.getResource(
-      leaderboard.connected_realm
-    );
+    return dataSources.mythicKeystone.getResource(leaderboard.connected_realm);
   }
 
-  private getPeriodFromMythicKeystoneLeaderboard(
+  private async getPeriod(
     leaderboard: any,
     args: any,
     { dataSources }: { dataSources: IDataSources }
@@ -52,5 +38,13 @@ export default class MythicKeystoneLeaderboardResolver {
     return dataSources.mythicKeystone.mythicKeystonePeriodById(
       leaderboard.period
     );
+  }
+
+  private getEntries(
+    leaderboard: any,
+    args: any,
+    { dataSources }: { dataSources: IDataSources }
+  ) {
+    return leaderboard.leading_groups;
   }
 }
