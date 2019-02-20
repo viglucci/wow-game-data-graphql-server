@@ -25,13 +25,13 @@ import ResolverMapFactory from './app/resolver/ResolverMapFactory';
 import IDataSources from './interfaces/IDataSources';
 import responseTime from 'response-time';
 import RegionDataSource from './app/datasource/RegionDataSource';
+import { GraphQLError } from 'graphql';
 
-let server = new InversifyExpressServer(container);
+const serverBuilder = new InversifyExpressServer(container);
+const configManager = container.get(ConfigManager);
+const logger = container.get(Logger);
 
-server.setConfig(app => {
-  const configManager = container.get(ConfigManager);
-  const logger = container.get(Logger);
-
+serverBuilder.setConfig(app => {
   app.set('view engine', 'pug');
   app.set('views', path.resolve(`${__dirname}/../resources/views`));
 
@@ -109,6 +109,10 @@ server.setConfig(app => {
       return {
         locale: req.locale
       };
+    },
+    formatError: (error: GraphQLError) => {
+      logger.error({ err: error });
+      return error;
     }
   });
 
@@ -118,20 +122,20 @@ server.setConfig(app => {
   });
 });
 
-server.setErrorConfig((app: any) => {
+serverBuilder.setErrorConfig((app: any) => {
   app.use(
     (
-      error: Error,
+      err: Error,
       request: express.Request,
       response: express.Response,
       next: express.NextFunction
     ) => {
-      console.error(error.stack);
-      response.status(500).send('Something broke!');
+      logger.error({ err });
+      response.status(500).send('Unhandled server error.');
     }
   );
 });
 
-let serverInstance = server.build();
+let serverInstance = serverBuilder.build();
 
 export default serverInstance;
